@@ -4,6 +4,9 @@ import { THREE } from "expo-three";
 require("../util/OBJLoader");
 require("../util/MTLLoader");
 
+//Google Poly API
+//AIzaSyDUfRuGIzD5AjPV_Nx0ixO4LWP9hwNVqF8
+
 export default class GooglePoly {
 
     constructor(apiKey) {
