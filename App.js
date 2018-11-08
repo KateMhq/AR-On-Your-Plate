@@ -16,7 +16,6 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./src/reducers";
 import Wrapper from "./src/components/Wrapper";
-import ARContainer from './src/containers/ARContainer'
 
 
 const styles = StyleSheet.create({
@@ -58,7 +57,7 @@ export default class App extends React.Component {
         >
           {/* <View style={styles.container}> */}
             {/* <MenuItems menuItems={this.state.arrayWithMenuItems}/> */}
-            <ARContainer/>
+            <Wrapper/>
           {/* </View> */}
         </Provider>
       );
