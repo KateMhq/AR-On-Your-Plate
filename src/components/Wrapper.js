@@ -24,11 +24,14 @@ class Wrapper extends React.Component {
     return (
       <View>
         <TouchableHighlight
-          onPress={() => {
+          onPress={event => {
+            this.props.updateDish(
+              "https://poly.googleapis.com/downloads/6_2gGwLWWHN/2fjlcvDtM61"
+            );
             this.setModalVisible(true);
           }}
         >
-          <Image source={burgerPic} style={{ width: 100, height: 100 }} />
+          <Image source={burgerPic} style={{ width: 100, height: 100 }} id="" />
         </TouchableHighlight>
         <Modal
           animationType="slide"
