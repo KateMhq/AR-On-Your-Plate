@@ -4,6 +4,7 @@ import { AR, Camera, Permissions, Asset } from "expo";
 import ExpoTHREE, { THREE } from "expo-three";
 import ExpoGraphics from "expo-graphics";
 import GooglePoly from "../../api/GooglePoly";
+import TouchableView from './TouchableView'
 
 const styles = StyleSheet.create({
   container: {
@@ -46,7 +47,10 @@ export default class ARDisplay extends React.Component {
       return <Text>No access to camera</Text>;
     } else {
       return (
-        <View style={{ flex: 1 }}>
+        <TouchableView
+        style={{ flex: 1 }}
+        shouldCancelWhenOutside={false}
+        onTouchesBegan={this.onTouchesBegan}>
           <ExpoGraphics.View
             style={{ flex: 1 }}
             onContextCreate={this.onContextCreate}
@@ -57,7 +61,7 @@ export default class ARDisplay extends React.Component {
             isArRunningStateEnabled
             isArCameraStateEnabled
           />
-        </View>
+        </TouchableView>
       );
     }
   }
@@ -103,6 +107,30 @@ export default class ARDisplay extends React.Component {
       0.01,
       1000
     );
+    const ambientLight = new THREE.AmbientLight(0xaaaaaa);
+    this.scene.add(ambientLight);
+  };
+
+  onResize = ({ x, y, scale, width, height }) => {
+    this.camera.aspect = width / height;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setPixelRatio(scale);
+    this.renderer.setSize(width, height);
+  };
+
+  onRender = delta => {
+      
+    this.renderer.render(this.scene, this.camera);
+  };
+
+
+  onTouchesBegan = async ({ locationX: x, locationY: y }) => {
+    if (!this.renderer) {
+      return;
+    }
+
+    const size = this.renderer.getSize();
+    console.log('touch', { x, y, ...size });
 
     const loader = new THREE.OBJLoader();
     const MTLLoader = new THREE.MTLLoader();
@@ -115,19 +143,12 @@ export default class ARDisplay extends React.Component {
 
     this.scene.add(model);
 
-    const ambientLight = new THREE.AmbientLight(0xaaaaaa);
-
-    this.scene.add(ambientLight);
+    // model.rotation.x += 2
+    model.rotation.y += 10
+    
+    }
   };
 
-  onResize = ({ x, y, scale, width, height }) => {
-    this.camera.aspect = width / height;
-    this.camera.updateProjectionMatrix();
-    this.renderer.setPixelRatio(scale);
-    this.renderer.setSize(width, height);
-  };
 
-  onRender = delta => {
-    this.renderer.render(this.scene, this.camera);
-  };
-}
+
+
