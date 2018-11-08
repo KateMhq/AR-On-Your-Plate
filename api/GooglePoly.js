@@ -6,6 +6,7 @@ require("../util/MTLLoader");
 
 //Google Poly API
 //AIzaSyDUfRuGIzD5AjPV_Nx0ixO4LWP9hwNVqF8
+//https://poly.googleapis.com/v1/assets?keywords=duck&pageSize=1&key=AIzaSyDUfRuGIzD5AjPV_Nx0ixO4LWP9hwNVqF8
 
 export default class GooglePoly {
 
