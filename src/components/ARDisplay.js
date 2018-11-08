@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { AR, Camera, Permissions, Asset } from "expo";
 import ExpoTHREE, { THREE } from "expo-three";
 import ExpoGraphics from "expo-graphics";
@@ -38,6 +38,7 @@ export default class ARDisplay extends React.Component {
       updateCameraPermission,
       updateTurkeyObj,
       updateTurkeyMtl,
+      updateDish,
     } = this.props;
 
     if (hasCameraPermission === null) {
@@ -45,6 +46,7 @@ export default class ARDisplay extends React.Component {
     } else if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     } else {
+      console.log("Current dish", this.props.currentDish);
       return (
         <View style={{ flex: 1 }}>
           <ExpoGraphics.View
@@ -57,26 +59,27 @@ export default class ARDisplay extends React.Component {
             isArRunningStateEnabled
             isArCameraStateEnabled
           />
+          {/* <ScrollView horizontal={true} style={{ height: 30 }}>
+            <Text>Chicken</Text>
+            <Text>Sushi</Text>
+            <Text>Salmon</Text>
+          </ScrollView> */}
         </View>
       );
     }
   }
 
   async turkeyObj() {
-    const { updateTurkeyObj } = this.props;
+    const { updateTurkeyObj, currentDish } = this.props;
 
-    return fetch(
-      "https://poly.googleapis.com/downloads/6_2gGwLWWHN/2fjlcvDtM61/model.obj"
-    )
+    return fetch(`${currentDish}/model.obj`)
       .then(data => data.text())
       .then(obj => updateTurkeyObj(obj));
   }
 
   async turkeyMtl() {
-    const { updateTurkeyMtl } = this.props;
-    return fetch(
-      "https://poly.googleapis.com/downloads/6_2gGwLWWHN/2fjlcvDtM61/materials.mtl"
-    )
+    const { updateTurkeyMtl, currentDish } = this.props;
+    return fetch(`${currentDish}/materials.mtl`)
       .then(data => data.text())
       .then(mtl => updateTurkeyMtl(mtl));
   }
