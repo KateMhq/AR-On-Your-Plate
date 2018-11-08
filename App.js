@@ -7,7 +7,7 @@ import {
   TouchableHighlight,
   Image,
 } from "react-native";
-import Expo, { AR, Camera, Permissions, Asset } from "expo";
+import { AR, Camera, Permissions, Asset } from "expo";
 import ExpoTHREE, { THREE } from "expo-three";
 import ExpoGraphics from "expo-graphics";
 import GooglePoly from "./api/GooglePoly";
@@ -16,6 +16,7 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./src/reducers";
 import Wrapper from "./src/components/Wrapper";
+import ARContainer from './src/containers/ARContainer'
 
 
 const styles = StyleSheet.create({
@@ -55,10 +56,10 @@ export default class App extends React.Component {
         <Provider
           store={createStore(rootReducer, applyMiddleware(thunkMiddleware))}
         >
-          <View style={styles.container}>
-            <MenuItems menuItems={this.state.arrayWithMenuItems}/>
+          {/* <View style={styles.container}> */}
+            {/* <MenuItems menuItems={this.state.arrayWithMenuItems}/> */}
             <ARContainer/>
-          </View>
+          {/* </View> */}
         </Provider>
       );
     }
