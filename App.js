@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Modal,
+  TouchableHighlight,
+} from "react-native";
 import Expo, { AR, Camera, Permissions, Asset } from "expo";
 import ExpoTHREE, { THREE } from "expo-three";
 import ExpoGraphics from "expo-graphics";
@@ -15,22 +21,43 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
 
 export default class App extends React.Component {
+  state = {
+    modalVisible: false,
+  };
 
+  setModalVisible(visible) {
+    this.setState({ modalVisible: false });
+  }
   render() {
-
-      return (
-        <Provider
-          store={createStore(rootReducer, applyMiddleware(thunkMiddleware))}
+    return (
+      <Provider
+        store={createStore(rootReducer, applyMiddleware(thunkMiddleware))}
+      >
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+          }}
         >
           <View style={{ flex: 1 }}>
-            <ARContainer/>
+            <ARContainer />
           </View>
-        </Provider>
-      );
-    }
+          <TouchableHighlight
+            onPress={() => {
+              this.setModalVisible(!this.state.modalVisible);
+            }}
+          >
+            <Text>Hide Modal</Text>
+          </TouchableHighlight>
+        </Modal>
+      </Provider>
+    );
   }
+}
