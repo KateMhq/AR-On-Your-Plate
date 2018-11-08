@@ -4,7 +4,7 @@ import { AR, Camera, Permissions, Asset } from "expo";
 import ExpoTHREE, { THREE } from "expo-three";
 import ExpoGraphics from "expo-graphics";
 import GooglePoly from "../../api/GooglePoly";
-import TouchableView from './TouchableView'
+import TouchableView from "./TouchableView";
 
 const styles = StyleSheet.create({
   container: {
@@ -50,9 +50,10 @@ export default class ARDisplay extends React.Component {
       console.log("Current dish", this.props.currentDish);
       return (
         <TouchableView
-        style={{ flex: 1 }}
-        shouldCancelWhenOutside={false}
-        onTouchesBegan={this.onTouchesBegan}>
+          style={{ flex: 1 }}
+          shouldCancelWhenOutside={false}
+          onTouchesBegan={this.onTouchesBegan}
+        >
           <ExpoGraphics.View
             style={{ flex: 1 }}
             onContextCreate={this.onContextCreate}
@@ -63,9 +64,7 @@ export default class ARDisplay extends React.Component {
             isArRunningStateEnabled
             isArCameraStateEnabled
           />
-
         </TouchableView>
-
       );
     }
   }
@@ -119,10 +118,8 @@ export default class ARDisplay extends React.Component {
   };
 
   onRender = delta => {
-      
     this.renderer.render(this.scene, this.camera);
   };
-
 
   onTouchesBegan = async ({ locationX: x, locationY: y }) => {
     if (!this.renderer) {
@@ -130,7 +127,7 @@ export default class ARDisplay extends React.Component {
     }
 
     const size = this.renderer.getSize();
-    console.log('touch', { x, y, ...size });
+    console.log("touch", { x, y, ...size });
 
     const loader = new THREE.OBJLoader();
     const MTLLoader = new THREE.MTLLoader();
@@ -144,11 +141,6 @@ export default class ARDisplay extends React.Component {
     this.scene.add(model);
 
     // model.rotation.x += 2
-    model.rotation.y += 10
-    
-    }
+    model.rotation.y += 10;
   };
-
-
-
-
+}
