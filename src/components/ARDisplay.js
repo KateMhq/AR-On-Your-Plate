@@ -5,28 +5,22 @@ import ExpoTHREE, { THREE } from "expo-three";
 import ExpoGraphics from "expo-graphics";
 import GooglePoly from "../../api/GooglePoly";
 
-
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
 
 export default class ARDisplay extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     console.log(props);
   }
 
-
   async componentDidMount() {
-
     const { updateCameraPermission } = this.props;
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     console.log(status);
@@ -35,7 +29,6 @@ export default class ARDisplay extends React.Component {
   }
 
   render() {
-
     const {
       searchModalVisible,
       hasCameraPermission,
@@ -53,26 +46,23 @@ export default class ARDisplay extends React.Component {
       return <Text>No access to camera</Text>;
     } else {
       return (
-
-          <View style={{ flex: 1 }}>
-            <ExpoGraphics.View
-              style={{ flex: 1 }}
-              onContextCreate={this.onContextCreate}
-              onRender={this.onRender}
-              onResize={this.onResize}
-              isArEnabled
-              arTrackingConfiguration={AR.TrackingConfiguration.World}
-              isArRunningStateEnabled
-              isArCameraStateEnabled
-            />
-          </View>
-
+        <View style={{ flex: 1 }}>
+          <ExpoGraphics.View
+            style={{ flex: 1 }}
+            onContextCreate={this.onContextCreate}
+            onRender={this.onRender}
+            onResize={this.onResize}
+            isArEnabled
+            arTrackingConfiguration={AR.TrackingConfiguration.World}
+            isArRunningStateEnabled
+            isArCameraStateEnabled
+          />
+        </View>
       );
     }
   }
 
   async turkeyObj() {
-
     const { updateTurkeyObj } = this.props;
 
     return fetch(
@@ -113,7 +103,6 @@ export default class ARDisplay extends React.Component {
       0.01,
       1000
     );
-
 
     const loader = new THREE.OBJLoader();
     const MTLLoader = new THREE.MTLLoader();

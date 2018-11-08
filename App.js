@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Modal,
+  TouchableHighlight,
+  Image,
+} from "react-native";
 import Expo, { AR, Camera, Permissions, Asset } from "expo";
 import ExpoTHREE, { THREE } from "expo-three";
 import ExpoGraphics from "expo-graphics";
@@ -8,7 +15,7 @@ import thunkMiddleware from "redux-thunk";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./src/reducers";
-import ARContainer from "./src/containers/ARContainer";
+import Wrapper from "./src/components/Wrapper";
 
 
 const styles = StyleSheet.create({
@@ -16,8 +23,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
 
 export default class App extends React.Component {
@@ -40,7 +47,7 @@ export default class App extends React.Component {
     ]
     };
   }
-  
+
 
   render() {
 
