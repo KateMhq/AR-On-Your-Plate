@@ -1,4 +1,4 @@
-import ARContainer from "./ARContainer";
+import ARContainer from "../containers/ARContainer";
 import React from "react";
 import {
   StyleSheet,
@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
   Image,
 } from "react-native";
-class ARContainerContainer extends React.Component {
+class Wrapper extends React.Component {
   state = {
     modalVisible: false,
   };
@@ -34,9 +34,6 @@ class ARContainerContainer extends React.Component {
           animationType="slide"
           transparent={false}
           visible={this.state.modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-          }}
         >
           <ARContainer />
           <TouchableHighlight
@@ -52,4 +49,4 @@ class ARContainerContainer extends React.Component {
   }
 }
 
-export default ARContainerContainer;
+export default Wrapper;

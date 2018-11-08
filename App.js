@@ -15,7 +15,7 @@ import thunkMiddleware from "redux-thunk";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./src/reducers";
-import ARContainerContainer from "./src/containers/ARContainerContainer";
+import Wrapper from "./src/components/Wrapper";
 
 const styles = StyleSheet.create({
   container: {
@@ -33,7 +33,7 @@ export default class App extends React.Component {
         store={createStore(rootReducer, applyMiddleware(thunkMiddleware))}
       >
         <View style={{ flex: 1 }}>
-          <ARContainerContainer />
+          <Wrapper />
         </View>
       </Provider>
     );
