@@ -17,13 +17,11 @@ const styles = StyleSheet.create({
 export default class ARDisplay extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
   }
 
   async componentDidMount() {
     const { updateCameraPermission } = this.props;
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
-    console.log(status);
     updateCameraPermission();
     THREE.suppressExpoWarnings();
   }

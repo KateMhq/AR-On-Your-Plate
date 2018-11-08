@@ -7,7 +7,7 @@ import {
 } from "../actions";
 
 function mapStateToProps(state) {
-  console.log(state.ar.turkeyMtl);
+
   return {
     searchModalVisible: state.ar.searchModalVisible,
     hasCameraPermission: state.ar.hasCameraPermission,
