@@ -18,11 +18,13 @@ const styles = StyleSheet.create({
 export default class ARDisplay extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
   }
 
   async componentDidMount() {
     const { updateCameraPermission } = this.props;
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    console.log(status);
     updateCameraPermission();
     THREE.suppressExpoWarnings();
   }
@@ -123,8 +125,11 @@ export default class ARDisplay extends React.Component {
     this.renderer.setSize(width, height);
   };
 
-  onRender = delta => {
-   
+  onRender = (delta) => {
+   if(this.model){
+     this.model.rotation.y += 0.01
+     this.model.updateMatrix();
+   }
     this.renderer.render(this.scene, this.camera);
   };
 
@@ -145,32 +150,31 @@ export default class ARDisplay extends React.Component {
     );
     
     for (let hit of hitTest) {
-      const { worldTransform } = hit;
+        const { worldTransform } = hit;
       
-    if (!this.model) {
-      const loader = new THREE.OBJLoader();
-      const MTLLoader = new THREE.MTLLoader();
-      const materials = MTLLoader.parse(this.props.turkeyMtl);
-      loader.setMaterials(materials);
-      this.model = loader.parse(this.props.turkeyObj);
-    } else {
-      this.scene.remove(this.model)
-    }
-
-    ExpoTHREE.utils.scaleLongestSideToSize(this.model, 0.3);
-    ExpoTHREE.utils.alignMesh(this.model, { y: 1 });
-
+      if (!this.model) {
+        const loader = new THREE.OBJLoader();
+        const MTLLoader = new THREE.MTLLoader();
+        const materials = MTLLoader.parse(this.props.turkeyMtl);
+        loader.setMaterials(materials);
+        this.model = loader.parse(this.props.turkeyObj);
+      } else {
+        this.scene.remove(this.model)
+      }
       
-      this.scene.add(this.model)
-      this.model.matrixAutoUpdate = false;
-
-      const matrix = new THREE.Matrix4();
-      matrix.fromArray(worldTransform);
-
-      this.model.applyMatrix(matrix);
-      this.model.updateMatrix();
-      this.model.rotation.x += 10;
-    }
+      ExpoTHREE.utils.scaleLongestSideToSize(this.model, 0.3);
+      ExpoTHREE.utils.alignMesh(this.model, { y: 1 });
+      
+      
+        this.scene.add(this.model)
+        this.model.matrixAutoUpdate = false;
+      
+        const matrix = new THREE.Matrix4();
+        matrix.fromArray(worldTransform);
+      
+        this.model.applyMatrix(matrix);
+        this.model.updateMatrix();
+      }
   };
 }
 
