@@ -27,8 +27,12 @@ class Wrapper extends React.Component {
         flexDirection: 'column',
         flex: 1
       }}>
+
         <TouchableHighlight
-          onPress={() => {
+          onPress={event => {
+            this.props.updateDish(
+              "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut"
+            );
             this.setModalVisible(true);
           }}
         >

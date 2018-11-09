@@ -1,9 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { AR, Camera, Permissions, Asset } from "expo";
 import ExpoTHREE, { THREE } from "expo-three";
 import ExpoGraphics from "expo-graphics";
 import GooglePoly from "../../api/GooglePoly";
+import TouchableView from "./TouchableView";
 
 const styles = StyleSheet.create({
   container: {
@@ -36,6 +37,7 @@ export default class ARDisplay extends React.Component {
       updateCameraPermission,
       updateTurkeyObj,
       updateTurkeyMtl,
+      updateDish,
     } = this.props;
 
     if (hasCameraPermission === null) {
@@ -43,8 +45,13 @@ export default class ARDisplay extends React.Component {
     } else if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     } else {
+      console.log("Current dish", this.props.currentDish);
       return (
-        <View style={{ flex: 1 }}>
+        <TouchableView
+          style={{ flex: 1 }}
+          shouldCancelWhenOutside={false}
+          onTouchesBegan={this.onTouchesBegan}
+        >
           <ExpoGraphics.View
             style={{ flex: 1 }}
             onContextCreate={this.onContextCreate}
@@ -55,26 +62,22 @@ export default class ARDisplay extends React.Component {
             isArRunningStateEnabled
             isArCameraStateEnabled
           />
-        </View>
+        </TouchableView>
       );
     }
   }
 
   async turkeyObj() {
-    const { updateTurkeyObj } = this.props;
+    const { updateTurkeyObj, currentDish } = this.props;
 
-    return fetch(
-      "https://poly.googleapis.com/downloads/6_2gGwLWWHN/2fjlcvDtM61/model.obj"
-    )
+    return fetch(`${currentDish}/model.obj`)
       .then(data => data.text())
       .then(obj => updateTurkeyObj(obj));
   }
 
   async turkeyMtl() {
-    const { updateTurkeyMtl } = this.props;
-    return fetch(
-      "https://poly.googleapis.com/downloads/6_2gGwLWWHN/2fjlcvDtM61/materials.mtl"
-    )
+    const { updateTurkeyMtl, currentDish } = this.props;
+    return fetch(`${currentDish}/materials.mtl`)
       .then(data => data.text())
       .then(mtl => updateTurkeyMtl(mtl));
   }
@@ -101,20 +104,7 @@ export default class ARDisplay extends React.Component {
       0.01,
       1000
     );
-
-    const loader = new THREE.OBJLoader();
-    const MTLLoader = new THREE.MTLLoader();
-    const materials = MTLLoader.parse(this.props.turkeyMtl);
-    loader.setMaterials(materials);
-    const model = loader.parse(this.props.turkeyObj);
-
-    ExpoTHREE.utils.scaleLongestSideToSize(model, 0.1);
-    ExpoTHREE.utils.alignMesh(model, { y: 1 });
-
-    this.scene.add(model);
-
     const ambientLight = new THREE.AmbientLight(0xaaaaaa);
-
     this.scene.add(ambientLight);
   };
 
@@ -127,5 +117,28 @@ export default class ARDisplay extends React.Component {
 
   onRender = delta => {
     this.renderer.render(this.scene, this.camera);
+  };
+
+  onTouchesBegan = async ({ locationX: x, locationY: y }) => {
+    if (!this.renderer) {
+      return;
+    }
+
+    const size = this.renderer.getSize();
+    console.log("touch", { x, y, ...size });
+
+    const loader = new THREE.OBJLoader();
+    const MTLLoader = new THREE.MTLLoader();
+    const materials = MTLLoader.parse(this.props.turkeyMtl);
+    loader.setMaterials(materials);
+    const model = loader.parse(this.props.turkeyObj);
+
+    ExpoTHREE.utils.scaleLongestSideToSize(model, 0.1);
+    ExpoTHREE.utils.alignMesh(model, { y: 1 });
+
+    this.scene.add(model);
+
+    // model.rotation.x += 2
+    model.rotation.y += 10;
   };
 }

@@ -4,8 +4,7 @@ const initialState = {
   type: null,
   turkeyObj: "",
   turkeyMtl: "",
-}
-
+};
 
 function ar(state = initialState, action) {
   switch (action.type) {

@@ -15,8 +15,7 @@ import thunkMiddleware from "redux-thunk";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./src/reducers";
-import Wrapper from "./src/components/Wrapper";
-
+import WrapperContainer from "./src/containers/WrapperContainer";
 
 // const styles = StyleSheet.create({
 //   container: {
@@ -29,18 +28,16 @@ import Wrapper from "./src/components/Wrapper";
 
 export default class App extends React.Component {
 
-
   render() {
-
-      return (
-        <Provider
-
-         store={createStore(rootReducer, applyMiddleware(thunkMiddleware))}
-        >
-
-            <Wrapper />
-
-        </Provider>
-      );
-    }
+    return (
+      <Provider
+        store={createStore(rootReducer, applyMiddleware(thunkMiddleware))}
+      >
+        {/* <View style={styles.container}> */}
+        {/* <MenuItems menuItems={this.state.arrayWithMenuItems}/> */}
+        <WrapperContainer />
+        {/* </View> */}
+      </Provider>
+    );
   }
+}
