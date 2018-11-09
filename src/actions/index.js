@@ -25,3 +25,15 @@ export function updateDish(url) {
     url,
   };
 }
+
+export function setModalVisible(){
+  return {
+    type: "SET_MODAL_VISIBLE",
+  }
+}
+
+export function hideModal(){
+  return {
+    type: "HIDE_MODAL",
+  }
+}

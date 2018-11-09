@@ -1,11 +1,15 @@
 const initialState = {
-  currentDish: "https://poly.googleapis.com/downloads/6_2gGwLWWHN/2fjlcvDtM61",
+
+  modalVisible: false,
+
 };
 
 function wrapper(state = initialState, action) {
   switch (action.type) {
-    case "UPDATE_DISH":
-      return Object.assign({}, state, { currentDish: action.url });
+    case "SET_MODAL_VISIBLE":
+      return Object.assign({}, state, { modalVisible: true });
+    case "HIDE_MODAL":
+      return Object.assign({}, state, { modalVisible: false });
     default:
       return state;
   }

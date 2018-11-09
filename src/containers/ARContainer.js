@@ -7,14 +7,14 @@ import {
 } from "../actions";
 
 function mapStateToProps(state) {
-  console.log(state.ar.turkeyMtl);
+
   return {
     searchModalVisible: state.ar.searchModalVisible,
     hasCameraPermission: state.ar.hasCameraPermission,
     type: state.ar.type,
     turkeyObj: state.ar.turkeyObj,
     turkeyMtl: state.ar.turkeyMtl,
-    currentDish: state.wrapper.currentDish,
+    currentDish: state.item.currentDish,
   };
 }
 
