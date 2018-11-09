@@ -9,7 +9,7 @@ const initialState={
   },
     tacos:{
       id:2,
-      obj:'https://poly.googleapis.com/downloads/33nYH5Sdxqb/1Qr8ITDI3b9',
+      url:'https://poly.googleapis.com/downloads/33nYH5Sdxqb/1Qr8ITDI3b9',
       image:'https://lh3.googleusercontent.com/GewMgUIDU24-ViwS2osK4SF2GUGZkJdyKdXN8fYuAYx0Xu-WPbxfRwcLwH2k9IY',
       name: "tacos",
       description: "Taste good",
@@ -17,7 +17,7 @@ const initialState={
     },
     ramen:{
       id:3,
-      obj:'https://poly.googleapis.com/downloads/fZ6yUxfPGXI/5UYqS5p8ZRL',
+      url:'https://poly.googleapis.com/downloads/fZ6yUxfPGXI/5UYqS5p8ZRL',
       image:'https://lh3.googleusercontent.com/0TgTKfvtpJ0pc0TAmQKGhoQWFvUvjDQA5Yae_DHdC3NHTTxeBpHquMqivRoJO6Cj',
       name: "ramen",
       description: "Taste good",
@@ -33,7 +33,7 @@ const initialState={
     }
   },
   currentDish:{
-    url:'https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut',  
+    url:'https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut',
   }
   }
 

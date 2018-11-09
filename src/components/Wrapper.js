@@ -23,10 +23,9 @@ class Wrapper extends React.Component {
         flex: 1
       }}>
 
-        <View
-        >
+
           <MenuItemContainer />
-        </View>
+
 
         <Modal
           animationType="slide"

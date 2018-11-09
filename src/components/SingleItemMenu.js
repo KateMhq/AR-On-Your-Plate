@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     image: {
         flex: 0.5,
         height: 50,
-        width: '100%'
+        width: 100
     },
     description: {
         flex: 0.5,
@@ -31,7 +31,9 @@ export default class SingleItemMenu extends React.Component {
               );
               this.props.setModalVisible();
             }}>
-            <View>
+            <View style={{
+              flex: 1
+            }}>
                 <Image
                     style={styles.image}
                     source={{ uri: this.props.dish.image }}
