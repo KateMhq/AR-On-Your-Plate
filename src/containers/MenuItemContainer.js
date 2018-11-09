@@ -1,26 +1,25 @@
 import MenuItem from "../components/MenuItem";
 import { connect } from "react-redux";
-// import {
-//   updateCameraPermission,
-//   updateTurkeyObj,
-//   updateTurkeyMtl,
-// } from "../actions";
+import {
+  setModalVisible,
+  updateDish
+} from "../actions";
 
 function mapStateToProps(state) {
 
   return {
     dishes: state.item.dishes,
+    currentDish: state.item.currentDish
   };
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     updateCameraPermission: () => dispatch(updateCameraPermission()),
-//     updateTurkeyObj: obj => dispatch(updateTurkeyObj(obj)),
-//     updateTurkeyMtl: obj => dispatch(updateTurkeyMtl(obj)),
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    setModalVisible: () => dispatch(setModalVisible()),
+    updateDish: (url) => dispatch(updateDish(url))
+  };
+};
 
 export default connect(
-  mapStateToProps
+  mapStateToProps, mapDispatchToProps
 )(MenuItem);

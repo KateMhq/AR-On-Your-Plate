@@ -17,6 +17,9 @@ export default class MenuItem extends React.Component {
             }}>
                 {Object.values(this.props.dishes).map(dish => {
                     return <SingleItemMenu
+                        currentDish ={this.props.currentDish}
+                        setModalVisible={this.props.setModalVisible}
+                        updateDish = {this.props.updateDish}
                         key={dish.name}
                         dish={dish}
                     />;

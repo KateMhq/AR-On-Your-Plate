@@ -1,21 +1,22 @@
 import Wrapper from "../components/Wrapper";
 import { connect } from "react-redux";
-import { updateDish } from "../actions";
+import { updateDish , hideModal} from "../actions";
 
 function mapStateToProps(state) {
   console.log(state.wrapper);
   return {
-    currentDish: state.wrapper.currentDish,
+
+    modalVisible: state.wrapper.modalVisible
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateDish: url => dispatch(updateDish(url)),
+    hideModal: ()=> dispatch(hideModal()),
   };
 };
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps,mapDispatchToProps
+
 )(Wrapper);

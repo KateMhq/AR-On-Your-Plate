@@ -12,13 +12,8 @@ import {
 import MenuItemContainer from '../containers/MenuItemContainer'
 
 class Wrapper extends React.Component {
-  state = {
-    modalVisible: false,
-  };
 
-  setModalVisible(visible) {
-    this.setState({ modalVisible: visible });
-  }
+
   render() {
 
     return (
@@ -28,26 +23,20 @@ class Wrapper extends React.Component {
         flex: 1
       }}>
 
-        <TouchableHighlight
-          onPress={event => {
-            this.props.updateDish(
-              "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut"
-            );
-            this.setModalVisible(true);
-          }}
+        <View
         >
           <MenuItemContainer />
-        </TouchableHighlight>
+        </View>
 
         <Modal
           animationType="slide"
           transparent={false}
-          visible={this.state.modalVisible}
+          visible={this.props.modalVisible}
         >
           <ARContainer />
           <TouchableHighlight
             onPress={() => {
-              this.setModalVisible(!this.state.modalVisible);
+              this.props.hideModal();
             }}
           >
             <Text>Hide Modal</Text>

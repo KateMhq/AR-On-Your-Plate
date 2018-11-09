@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableHighlight } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -25,7 +25,13 @@ export default class SingleItemMenu extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <TouchableHighlight style={styles.container} onPress={event => {
+              this.props.updateDish(
+                this.props.dish.url
+              );
+              this.props.setModalVisible();
+            }}>
+            <View>
                 <Image
                     style={styles.image}
                     source={{ uri: this.props.dish.image }}
@@ -34,7 +40,8 @@ export default class SingleItemMenu extends React.Component {
                     <Text>{this.props.dish.name}</Text>
                     <Text>{this.props.dish.description}</Text>
                 </View>
-            </View>
+              </View>
+            </TouchableHighlight>
         );
     }
 }

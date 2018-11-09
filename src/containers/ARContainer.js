@@ -14,7 +14,7 @@ function mapStateToProps(state) {
     type: state.ar.type,
     turkeyObj: state.ar.turkeyObj,
     turkeyMtl: state.ar.turkeyMtl,
-    currentDish: state.wrapper.currentDish,
+    currentDish: state.item.currentDish,
   };
 }
 
