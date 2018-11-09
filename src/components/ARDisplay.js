@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
-import { AR, Camera, Permissions, Asset } from "expo";
-import ExpoTHREE, { THREE } from "expo-three";
+import Expo,{ AR, Camera, Permissions, Asset } from "expo";
+import ExpoTHREE, { AR as ThreeAR, THREE } from "expo-three";
 import ExpoGraphics from "expo-graphics";
 import GooglePoly from "../../api/GooglePoly";
 import TouchableView from "./TouchableView";
@@ -90,8 +90,9 @@ export default class ARDisplay extends React.Component {
   }
 
   onContextCreate = async props => {
-    await this.preloadAssetsAsync();
+    
     const { gl, scale, width, height, arSession } = props;
+    // AR.PlaneDetectionTypes.Horizontal
     // Initialize renderer…
     this.renderer = new ExpoTHREE.Renderer(props);
 
@@ -106,11 +107,18 @@ export default class ARDisplay extends React.Component {
       0.01,
       1000
     );
+    await this.preloadAssetsAsync();
     const ambientLight = new THREE.AmbientLight(0xaaaaaa);
     this.scene.add(ambientLight);
   };
 
+
+
+
   onResize = ({ x, y, scale, width, height }) => {
+    if (!this.renderer) {
+      return;
+    }
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.renderer.setPixelRatio(scale);
@@ -118,6 +126,7 @@ export default class ARDisplay extends React.Component {
   };
 
   onRender = delta => {
+   
     this.renderer.render(this.scene, this.camera);
   };
 
@@ -129,18 +138,105 @@ export default class ARDisplay extends React.Component {
     const size = this.renderer.getSize();
     console.log("touch", { x, y, ...size });
 
-    const loader = new THREE.OBJLoader();
-    const MTLLoader = new THREE.MTLLoader();
-    const materials = MTLLoader.parse(this.props.turkeyMtl);
-    loader.setMaterials(materials);
-    const model = loader.parse(this.props.turkeyObj);
+    const { hitTest } = await AR.performHitTest(
+      {
+        x: x / size.width,
+        y: y / size.height,
+      },
+      AR.HitTestResultTypes.HorizontalPlane
+    );
+    
+    for (let hit of hitTest) {
+      const { worldTransform } = hit;
+      
+    if (!this.model) {
+      const loader = new THREE.OBJLoader();
+      const MTLLoader = new THREE.MTLLoader();
+      const materials = MTLLoader.parse(this.props.turkeyMtl);
+      loader.setMaterials(materials);
+      this.model = loader.parse(this.props.turkeyObj);
+    } else {
+      this.scene.remove(this.model)
+    }
 
-    ExpoTHREE.utils.scaleLongestSideToSize(model, 0.1);
-    ExpoTHREE.utils.alignMesh(model, { y: 1 });
+    ExpoTHREE.utils.scaleLongestSideToSize(this.model, 0.3);
+    ExpoTHREE.utils.alignMesh(this.model, { y: 1 });
 
-    this.scene.add(model);
+      
+      this.scene.add(this.model)
+      this.model.matrixAutoUpdate = false;
 
-    // model.rotation.x += 2
-    model.rotation.y += 10;
+      const matrix = new THREE.Matrix4();
+      matrix.fromArray(worldTransform);
+
+      this.model.applyMatrix(matrix);
+      this.model.updateMatrix();
+      this.model.rotation.x += 10;
+    }
   };
 }
+
+
+
+
+//     const loader = new THREE.OBJLoader();
+//     const MTLLoader = new THREE.MTLLoader();
+//     const materials = MTLLoader.parse(this.props.turkeyMtl);
+//     loader.setMaterials(materials);
+//     const model = loader.parse(this.props.turkeyObj);
+
+//     ExpoTHREE.utils.scaleLongestSideToSize(model, 0.1);
+//     ExpoTHREE.utils.alignMesh(model, { y: 1 });
+
+//     this.scene.add(model);
+
+
+
+
+
+
+
+// this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+
+
+
+// This is called by the `ExpoGraphics.View` once it's initialized
+// onContextCreate = async ({
+//   gl,
+//   canvas,
+//   width,
+//   height,
+//   scale: pixelRatio,}) => {
+//   this.renderer = new ExpoTHREE.Renderer({
+//     gl,
+//     canvas,
+//     width,
+//     height,
+//     pixelRatio,
+//   });
+//   this.scene = new THREE.Scene();
+//   this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+//   this.camera.position.z = 5;
+//   const geometry = new THREE.BoxGeometry(1, 1, 1);
+//   const map = await ExpoTHREE.loadAsync(Assets.icons['ios.png']);
+
+//   const material = new THREE.MeshBasicMaterial({
+//     // NOTE: How to create an Expo-compatible THREE texture
+//     map,
+//   });
+//   this.cube = new THREE.Mesh(geometry, material);
+//   this.scene.add(this.cube);
+// };
+
+// onResize = ({ width, height, scale }) => {
+//   this.camera.aspect = width / height;
+//   this.camera.updateProjectionMatrix();
+//   this.renderer.setPixelRatio(scale);
+//   this.renderer.setSize(width, height);
+// };
+
+// onRender = delta => {
+//   this.cube.rotation.x += 3.5 * delta;
+//   this.cube.rotation.y += 2 * delta;
+//   this.renderer.render(this.scene, this.camera);
+// };
