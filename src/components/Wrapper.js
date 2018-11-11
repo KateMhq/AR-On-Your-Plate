@@ -7,39 +7,64 @@ import {
   Modal,
   TouchableHighlight,
   Image,
-  ScrollView
+  ScrollView,
 } from "react-native";
-import MenuItemContainer from '../containers/MenuItemContainer'
-
+import MenuItemContainer from "../containers/MenuItemContainer";
+import { Actions } from "react-native-router-flux";
 class Wrapper extends React.Component {
-
-
   render() {
-
     return (
-      <ScrollView style={{
-        backgroundColor: 'green',
-        flexDirection: 'column',
-        flex: 1
-      }}>
-
-
-          <MenuItemContainer />
-
+      <ScrollView
+        style={{
+          backgroundColor: "green",
+          flexDirection: "column",
+          flex: 1,
+        }}
+      >
+        <TouchableHighlight
+          onPress={() => {
+            Actions.account();
+          }}
+          style={{
+            backgroundColor: "black",
+            height: 50,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 50,
+              color: "white",
+            }}
+          >
+            View account
+          </Text>
+        </TouchableHighlight>
+        <MenuItemContainer />
 
         <Modal
           animationType="slide"
           transparent={false}
           visible={this.props.modalVisible}
         >
-          <ARContainer />
           <TouchableHighlight
+            style={{
+              backgroundColor: "black",
+              height: 50,
+            }}
             onPress={() => {
               this.props.hideModal();
             }}
           >
-            <Text>Hide Modal</Text>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 50,
+              }}
+            >
+              Hide Modal
+            </Text>
           </TouchableHighlight>
+          <ARContainer />
         </Modal>
       </ScrollView>
     );
