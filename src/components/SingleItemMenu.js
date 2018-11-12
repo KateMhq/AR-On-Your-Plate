@@ -1,49 +1,123 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableHighlight } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableHighlight,
+  TouchableOpacity
+} from "react-native";
+import styled from "styled-components/native";
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        flexDirection:'column',
-        alignItems: "center",
-        justifyContent: "center"
-    },
-    image: {
-        flex: 0.5,
-        height: 50,
-        width: 100
-    },
-    description: {
-        flex: 0.5,
-        padding:20,
-        justifyContent:"space-around"
-    }
+  container: {
+    // marginTop: 20,
+  }
 });
+const Container = styled(View)`
+  margin: 0 5px 5px 5px;
+  background-color: lightgray;
+  flex-direction: column;
+  border-radius: 15px;
+`;
+
+const Title = styled(Text)`
+  font-size: 30px;
+  text-align: center;
+  padding: 10px;
+`;
+
+const ImageContainer = styled(View)`
+  height: 250px;
+  width: 100%;
+  align-self: center;
+  padding: 0 5px;
+`;
+
+const Img = styled(Image)`
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+`;
+const Description = styled(View)`
+  padding: 5px;
+`;
+
+const DescriptionText = styled(Text)`
+  font-size: 20px;
+`;
+
+const PriceWithButtons = styled(View)`
+  padding: 5px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+const Price = styled(Text)`
+  font-size: 20px;
+`;
+const ButtonsWithQuantity = styled(View)`
+  flex-direction: row;
+  align-items: center;
+`;
+const MinusAndQuantityDisplayNone = styled(View)`
+  flex-direction: row;
+  align-items: center;
+`;
+const Btn = styled(TouchableOpacity)`
+  margin: 0 5px;
+  background-color: green;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+`;
+const BtnText = styled(Text)`
+  font-size: 30px;
+  font-weight: 900;
+`;
+const Quantity = styled(Text)`
+  font-size: 40px;
+`;
 
 export default class SingleItemMenu extends React.Component {
+  render() {
+    return (
+      <TouchableHighlight
+        onPress={event => {
+          this.props.updateDish(this.props.dish.url);
+          this.props.setModalVisible();
+        }}
+        style={styles.container}
+      >
+        <Container>
+          <Title>{this.props.dish.name}</Title>
+          <ImageContainer>
+            <Img source={{ uri: this.props.dish.image }} />
+          </ImageContainer>
 
-    render() {
-        return (
-            <TouchableHighlight style={styles.container} onPress={event => {
-              this.props.updateDish(
-                this.props.dish.url
-              );
-              this.props.setModalVisible();
-            }}>
-            <View style={{
-              flex: 1
-            }}>
-                <Image
-                    style={styles.image}
-                    source={{ uri: this.props.dish.image }}
-                />
-                <View style={styles.description}>
-                    <Text>{this.props.dish.name}</Text>
-                    <Text>{this.props.dish.description}</Text>
-                </View>
-              </View>
-            </TouchableHighlight>
-        );
-    }
+          <Description>
+            <DescriptionText>{this.props.dish.description}</DescriptionText>
+          </Description>
+
+          <PriceWithButtons>
+            <Price>£11</Price>
+
+            <ButtonsWithQuantity>
+              <MinusAndQuantityDisplayNone>
+                <Btn>
+                  <BtnText>-</BtnText>
+                </Btn>
+                <Quantity>0</Quantity>
+              </MinusAndQuantityDisplayNone>
+
+              <Btn>
+                <BtnText>+</BtnText>
+              </Btn>
+            </ButtonsWithQuantity>
+          </PriceWithButtons>
+        </Container>
+      </TouchableHighlight>
+    );
+  }
 }
