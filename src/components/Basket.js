@@ -6,7 +6,6 @@ export default class Basket extends React.Component {
     return (
       <View
         style={{
-          backgroundColor: "red",
           flexDirection: "column",
           justifyContent: "space-around",
           height: "100%",
