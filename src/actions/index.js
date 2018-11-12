@@ -26,14 +26,21 @@ export function updateDish(url) {
   };
 }
 
-export function setModalVisible(){
+export function setModalVisible() {
   return {
     type: "SET_MODAL_VISIBLE",
-  }
+  };
 }
 
-export function hideModal(){
+export function hideModal() {
   return {
     type: "HIDE_MODAL",
-  }
+  };
+}
+
+export function filterFood(course) {
+  return {
+    type: "FILTER_FOOD",
+    course,
+  };
 }

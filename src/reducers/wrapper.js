@@ -1,7 +1,6 @@
 const initialState = {
-
   modalVisible: false,
-
+  course: "",
 };
 
 function wrapper(state = initialState, action) {
@@ -10,6 +9,8 @@ function wrapper(state = initialState, action) {
       return Object.assign({}, state, { modalVisible: true });
     case "HIDE_MODAL":
       return Object.assign({}, state, { modalVisible: false });
+    case "FILTER_FOOD":
+      return Object.assign({}, state, { course: action.course });
     default:
       return state;
   }

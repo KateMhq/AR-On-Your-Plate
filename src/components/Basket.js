@@ -1,25 +1,22 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 
+export default class Basket extends React.Component {
+  render() {
+    return (
+      <View
+        style={{
+          backgroundColor: "red",
+          flexDirection: "column",
+          justifyContent: "space-around",
+          height: "100%",
+          flex: 1,
+        }}
+      >
+        <Text>Your Order</Text>
 
-
-
-export default class Order extends React.Component {
-
-    render() {
-        return (
-            <View style={{
-                backgroundColor: 'red',
-                flexDirection: 'column',
-                justifyContent:'space-around',
-                height: '100%',
-                flex:1
-            }}>
-          <Text>Your Order</Text>
-          <hr></hr>
-          <Text>Delivery charge: £5.00</Text>
-          {
-              /* JUST HERE FOR EXAMPLE
+        <Text>Delivery charge: £5.00</Text>
+        {/* JUST HERE FOR EXAMPLE
               
               {Object.keys(this.props.order).map(item => {
             return (
@@ -36,7 +33,7 @@ export default class Order extends React.Component {
                 </ScrollView>
             )
           })} */}
-            </View>
-        );
-    }
+      </View>
+    );
+  }
 }
