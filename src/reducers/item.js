@@ -5,36 +5,47 @@ const initialState = {
       url: "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut",
       image:
         "https://lh3.googleusercontent.com/pmGBEfwi1b2jwL6lb29uE_pmGIlBy9Mt8Dsz-_wwZSk_N16JRCLbqRxOlAr1JS-v",
-      name: "sushi",
-      description: "Taste good",
+      name: "Sushi",
+      description:
+        "Crispy Soft Shell Crab with a delicate burst of Flying Fish Roe, Avocado and a dash of Mayonnaise",
       course: "starter",
+      price: 4.5,
+      color: "#7DCE82",
     },
     tacos: {
       id: 2,
       url: "https://poly.googleapis.com/downloads/33nYH5Sdxqb/1Qr8ITDI3b9",
       image:
         "https://lh3.googleusercontent.com/GewMgUIDU24-ViwS2osK4SF2GUGZkJdyKdXN8fYuAYx0Xu-WPbxfRwcLwH2k9IY",
-      name: "tacos",
-      description: "Taste good",
+      name: "Tacos",
+      description:
+        "Tender hand-shredded brisket & flank beef slowly cooked in garlic spiuces & pasilla chile",
       course: "main",
+      price: 6.0,
+      color: "#FF8360",
     },
     ramen: {
       id: 3,
       url: "https://poly.googleapis.com/downloads/fZ6yUxfPGXI/5UYqS5p8ZRL",
       image:
         "https://lh3.googleusercontent.com/0TgTKfvtpJ0pc0TAmQKGhoQWFvUvjDQA5Yae_DHdC3NHTTxeBpHquMqivRoJO6Cj",
-      name: "ramen",
-      description: "Taste good",
+      name: "Ramen",
+      description:
+        "Shouyu Tonkotsu large size, all the toppings, extra egg and spicy miso pork",
       course: "main",
+      price: 5.0,
+      color: "#FF8360",
     },
     highTea: {
       id: 4,
       url: "https://poly.googleapis.com/downloads/2cX88a40PMz/fqrE8mMo9fi",
       image:
         "https://lh3.googleusercontent.com/CZ6ZmNxWH6XDb98Uy52Wpg0YBWTZQVIvzQcPBCVxeLYFVtDKHjWug5lMet86Jwwa4A",
-      name: "highTea",
-      description: "Taste good",
+      name: "High Tea",
+      description: "I'm not really sure what high tea is...",
       course: "dessert",
+      price: 5.55,
+      color: "#E8E288",
     },
   },
   currentDish: {

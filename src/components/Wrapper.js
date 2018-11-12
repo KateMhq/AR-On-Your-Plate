@@ -23,39 +23,27 @@ class Wrapper extends React.Component {
           flex: 1,
         }}
       >
-        <TouchableHighlight
-          onPress={() => {
-            Actions.basket();
-          }}
-          style={{
-            backgroundColor: "black",
-            height: 50,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 50,
-              color: "white",
-            }}
-          >
-            View basket
-          </Text>
-        </TouchableHighlight>
         <Text style={{ fontSize: 30 }}>Filter By: </Text>
         <View style={{ flexDirection: "row" }}>
           <CheckBox
+            checkedColor="#00FFF5"
+            containerStyle={{ backgroundColor: "#7DCE82" }}
             center
             title="Starter"
             checked={this.props.starter}
             onPress={() => this.props.filterStarter()}
           />
           <CheckBox
+            checkedColor="#00FFF5"
+            containerStyle={{ backgroundColor: "#FF8360" }}
             center
             title="Main"
             checked={this.props.main}
             onPress={() => this.props.filterMain()}
           />
           <CheckBox
+            checkedColor="#00FFF5"
+            containerStyle={{ backgroundColor: "#E8E288" }}
             center
             title="Dessert"
             checked={this.props.dessert}
@@ -91,6 +79,24 @@ class Wrapper extends React.Component {
           </TouchableHighlight>
           <ARContainer />
         </Modal>
+        <TouchableHighlight
+          onPress={() => {
+            Actions.basket();
+          }}
+          style={{
+            backgroundColor: "white",
+            height: 30,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 20,
+              color: "black",
+            }}
+          >
+            View basket
+          </Text>
+        </TouchableHighlight>
       </View>
     );
   }
