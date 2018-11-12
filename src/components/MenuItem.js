@@ -11,19 +11,57 @@ export default class MenuItem extends React.Component {
           flexDirection: "column",
           justifyContent: "space-around",
           height: "100%",
-          flex: 1
+          flex: 1,
         }}
       >
         {Object.values(this.props.dishes).map(dish => {
-          return (
-            <SingleItemMenu
-              currentDish={this.props.currentDish}
-              setModalVisible={this.props.setModalVisible}
-              updateDish={this.props.updateDish}
-              key={dish.name}
-              dish={dish}
-            />
-          );
+          if (this.props.starter == true) {
+            if (dish.course == "starter") {
+              return (
+                <SingleItemMenu
+                  currentDish={this.props.currentDish}
+                  setModalVisible={this.props.setModalVisible}
+                  updateDish={this.props.updateDish}
+                  key={dish.name}
+                  dish={dish}
+                />
+              );
+            }
+          } else if (this.props.main == true) {
+            if (dish.course == "main") {
+              return (
+                <SingleItemMenu
+                  currentDish={this.props.currentDish}
+                  setModalVisible={this.props.setModalVisible}
+                  updateDish={this.props.updateDish}
+                  key={dish.name}
+                  dish={dish}
+                />
+              );
+            }
+          } else if (this.props.dessert == true) {
+            if (dish.course == "dessert") {
+              return (
+                <SingleItemMenu
+                  currentDish={this.props.currentDish}
+                  setModalVisible={this.props.setModalVisible}
+                  updateDish={this.props.updateDish}
+                  key={dish.name}
+                  dish={dish}
+                />
+              );
+            }
+          } else {
+            return (
+              <SingleItemMenu
+                currentDish={this.props.currentDish}
+                setModalVisible={this.props.setModalVisible}
+                updateDish={this.props.updateDish}
+                key={dish.name}
+                dish={dish}
+              />
+            );
+          }
         })}
       </View>
     );
