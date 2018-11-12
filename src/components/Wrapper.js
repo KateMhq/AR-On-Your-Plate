@@ -7,7 +7,7 @@ import {
   Modal,
   TouchableHighlight,
   Image,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import MenuItemContainer from "../containers/MenuItemContainer";
 import { Actions } from "react-native-router-flux";
@@ -20,7 +20,7 @@ class Wrapper extends React.Component {
         style={{
           backgroundColor: "white",
           flexDirection: "column",
-          flex: 1
+          flex: 1,
         }}
       >
         <TouchableHighlight
@@ -29,13 +29,13 @@ class Wrapper extends React.Component {
           }}
           style={{
             backgroundColor: "black",
-            height: 50
+            height: 50,
           }}
         >
           <Text
             style={{
               fontSize: 50,
-              color: "white"
+              color: "white",
             }}
           >
             View basket
@@ -74,7 +74,7 @@ class Wrapper extends React.Component {
           <TouchableHighlight
             style={{
               backgroundColor: "black",
-              height: 50
+              height: 50,
             }}
             onPress={() => {
               this.props.hideModal();
@@ -83,7 +83,7 @@ class Wrapper extends React.Component {
             <Text
               style={{
                 color: "white",
-                fontSize: 50
+                fontSize: 50,
               }}
             >
               Hide Modal
