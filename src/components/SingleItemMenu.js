@@ -98,43 +98,42 @@ const Quantity = styled(Text)`
 export default class SingleItemMenu extends React.Component {
   render() {
     return (
-      <TouchableHighlight
-        onPress={event => {
-          this.props.updateDish(this.props.dish.url);
-          this.props.setModalVisible();
-        }}
-        style={styles.container}
-      >
-        <Container>
-          <Title style={{ backgroundColor: this.props.dish.color }}>
-            {this.props.dish.name}
-          </Title>
+      <Container>
+        <Title style={{ backgroundColor: this.props.dish.color }}>
+          {this.props.dish.name}
+        </Title>
+        <TouchableHighlight
+          onPress={event => {
+            this.props.updateDish(this.props.dish.url);
+            this.props.setModalVisible();
+          }}
+          style={styles.container}
+        >
           <ImageContainer>
             <Img source={{ uri: this.props.dish.image }} />
           </ImageContainer>
+        </TouchableHighlight>
+        <Description>
+          <DescriptionText>{this.props.dish.description}</DescriptionText>
+        </Description>
 
-          <Description>
-            <DescriptionText>{this.props.dish.description}</DescriptionText>
-          </Description>
+        <PriceWithButtons>
+          <Price>£{this.props.dish.price.toFixed(2)}</Price>
 
-          <PriceWithButtons>
-            <Price>£{this.props.dish.price.toFixed(2)}</Price>
+          <ButtonsWithQuantity>
+            <MinusAndQuantityDisplayNone>
+              <MinusBtn style={{ backgroundColor: this.props.dish.color }}>
+                <BtnText>-</BtnText>
+              </MinusBtn>
+              <Quantity>0</Quantity>
+            </MinusAndQuantityDisplayNone>
 
-            <ButtonsWithQuantity>
-              <MinusAndQuantityDisplayNone>
-                <MinusBtn style={{ backgroundColor: this.props.dish.color }}>
-                  <BtnText>-</BtnText>
-                </MinusBtn>
-                <Quantity>0</Quantity>
-              </MinusAndQuantityDisplayNone>
-
-              <AddBtn style={{ backgroundColor: this.props.dish.color }}>
-                <BtnText>+</BtnText>
-              </AddBtn>
-            </ButtonsWithQuantity>
-          </PriceWithButtons>
-        </Container>
-      </TouchableHighlight>
+            <AddBtn style={{ backgroundColor: this.props.dish.color }}>
+              <BtnText>+</BtnText>
+            </AddBtn>
+          </ButtonsWithQuantity>
+        </PriceWithButtons>
+      </Container>
     );
   }
 }

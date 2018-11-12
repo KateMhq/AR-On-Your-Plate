@@ -18,12 +18,12 @@ class Wrapper extends React.Component {
     return (
       <View
         style={{
-          backgroundColor: "white",
+          backgroundColor: "#EEE6DC",
           flexDirection: "column",
           flex: 1,
         }}
       >
-        <Text style={{ fontSize: 30 }}>Filter By: </Text>
+        <Text style={{ fontSize: 30, color: "#464646" }}>Filter By: </Text>
         <View style={{ flexDirection: "row" }}>
           <CheckBox
             checkedColor="#00FFF5"
@@ -50,7 +50,7 @@ class Wrapper extends React.Component {
             onPress={() => this.props.filterDessert()}
           />
         </View>
-        <ScrollView>
+        <ScrollView style={{ width: "98%", marginLeft: 3.5 }}>
           <MenuItemContainer />
         </ScrollView>
 
@@ -84,7 +84,6 @@ class Wrapper extends React.Component {
             Actions.basket();
           }}
           style={{
-            backgroundColor: "white",
             height: 30,
           }}
         >
