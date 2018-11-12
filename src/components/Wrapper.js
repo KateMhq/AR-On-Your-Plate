@@ -16,7 +16,7 @@ import { CheckBox } from "react-native-elements";
 class Wrapper extends React.Component {
   render() {
     return (
-      <ScrollView
+      <View
         style={{
           backgroundColor: "white",
           flexDirection: "column",
@@ -42,25 +42,29 @@ class Wrapper extends React.Component {
           </Text>
         </TouchableHighlight>
         <Text style={{ fontSize: 30 }}>Filter By: </Text>
-        <CheckBox
-          center
-          title="Starter"
-          checked={this.props.starter}
-          onPress={() => this.props.filterStarter()}
-        />
-        <CheckBox
-          center
-          title="Main"
-          checked={this.props.main}
-          onPress={() => this.props.filterMain()}
-        />
-        <CheckBox
-          center
-          title="Dessert"
-          checked={this.props.dessert}
-          onPress={() => this.props.filterDessert()}
-        />
-        <MenuItemContainer />
+        <View style={{ flexDirection: "row" }}>
+          <CheckBox
+            center
+            title="Starter"
+            checked={this.props.starter}
+            onPress={() => this.props.filterStarter()}
+          />
+          <CheckBox
+            center
+            title="Main"
+            checked={this.props.main}
+            onPress={() => this.props.filterMain()}
+          />
+          <CheckBox
+            center
+            title="Dessert"
+            checked={this.props.dessert}
+            onPress={() => this.props.filterDessert()}
+          />
+        </View>
+        <ScrollView>
+          <MenuItemContainer />
+        </ScrollView>
 
         <Modal
           animationType="slide"
@@ -87,7 +91,7 @@ class Wrapper extends React.Component {
           </TouchableHighlight>
           <ARContainer />
         </Modal>
-      </ScrollView>
+      </View>
     );
   }
 }

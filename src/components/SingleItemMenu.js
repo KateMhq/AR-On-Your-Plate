@@ -28,7 +28,7 @@ const Title = styled(Text)`
 `;
 
 const ImageContainer = styled(View)`
-  height: 250px;
+  height: 150px;
   width: 100%;
   align-self: center;
   padding: 0 5px;
