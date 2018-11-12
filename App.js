@@ -16,6 +16,7 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./src/reducers";
 import WrapperContainer from "./src/containers/WrapperContainer";
+import Router from "./Router";
 
 // const styles = StyleSheet.create({
 //   container: {
@@ -27,7 +28,6 @@ import WrapperContainer from "./src/containers/WrapperContainer";
 // });
 
 export default class App extends React.Component {
-
   render() {
     return (
       <Provider
@@ -35,7 +35,7 @@ export default class App extends React.Component {
       >
         {/* <View style={styles.container}> */}
         {/* <MenuItems menuItems={this.state.arrayWithMenuItems}/> */}
-        <WrapperContainer />
+        <Router />
         {/* </View> */}
       </Provider>
     );
