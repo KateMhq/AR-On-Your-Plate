@@ -2,7 +2,7 @@ import React from "react";
 import { Scene, Router } from "react-native-router-flux";
 import WrapperContainer from "./src/containers/WrapperContainer";
 import Landing from "./src/components/Landing";
-import NavExample from "./src/components/NavExample";
+import Basket from "./src/components/Basket";
 const RouterComponent = () => {
   return (
     <Router>
@@ -14,10 +14,10 @@ const RouterComponent = () => {
         <Scene key="main">
           <Scene key="menu" component={WrapperContainer} title="Menu" />
           <Scene
-            key="account"
-            component={NavExample}
-            title="Account Details"
-            onRightTitle="Update Profile"
+            key="basket"
+            component={Basket}
+            title="Your Basket"
+            rightTitle="Empty Basket"
             onRight={() => {}}
           />
         </Scene>

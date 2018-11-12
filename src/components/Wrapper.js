@@ -23,7 +23,7 @@ class Wrapper extends React.Component {
       >
         <TouchableHighlight
           onPress={() => {
-            Actions.account();
+            Actions.basket();
           }}
           style={{
             backgroundColor: "black",
@@ -36,7 +36,7 @@ class Wrapper extends React.Component {
               color: "white",
             }}
           >
-            View account
+            View basket
           </Text>
         </TouchableHighlight>
         <MenuItemContainer />
