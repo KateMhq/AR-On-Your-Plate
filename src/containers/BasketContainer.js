@@ -1,17 +1,12 @@
 import Basket from "../components/Basket";
 import { connect } from "react-redux";
-import { filterFood } from "../actions";
 
 function mapStateToProps(state) {
-  return {
-    course: state.basket.course,
-  };
+  return {};
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    filterFood,
-  };
+  return {};
 };
 
 export default connect(

@@ -38,9 +38,27 @@ export function hideModal() {
   };
 }
 
-export function filterFood(course) {
+export function receiveCourse(course) {
   return {
-    type: "FILTER_FOOD",
+    type: "RECEIVE_COURSE",
     course,
+  };
+}
+
+export function filterStarter() {
+  return {
+    type: "FILTER_STARTER",
+  };
+}
+
+export function filterMain() {
+  return {
+    type: "FILTER_MAIN",
+  };
+}
+
+export function filterDessert() {
+  return {
+    type: "FILTER_DESSERT",
   };
 }
