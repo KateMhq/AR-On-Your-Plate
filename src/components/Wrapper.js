@@ -7,7 +7,7 @@ import {
   Modal,
   TouchableHighlight,
   Image,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import MenuItemContainer from "../containers/MenuItemContainer";
 import { Actions } from "react-native-router-flux";
@@ -18,11 +18,12 @@ class Wrapper extends React.Component {
     return (
       <View
         style={{
-          backgroundColor: "white",
+          backgroundColor: "#F9FFEB",
           flexDirection: "column",
-          flex: 1
+          flex: 1,
         }}
       >
+
           <Button
             raised
             icon={{name: 'shopping-cart'}}
@@ -32,27 +33,34 @@ class Wrapper extends React.Component {
             }}
             />
         <Text style={{ fontSize: 30 }}>Filter By: </Text>
+
         <View style={{ flexDirection: "row" }}>
           <CheckBox
+            checkedColor="#00FFF5"
+            containerStyle={{ backgroundColor: "#7DCE82" }}
             center
             title="Starter"
             checked={this.props.starter}
             onPress={() => this.props.filterStarter()}
           />
           <CheckBox
+            checkedColor="#00FFF5"
+            containerStyle={{ backgroundColor: "#FF8360" }}
             center
             title="Main"
             checked={this.props.main}
             onPress={() => this.props.filterMain()}
           />
           <CheckBox
+            checkedColor="#00FFF5"
+            containerStyle={{ backgroundColor: "#E8E288" }}
             center
             title="Dessert"
             checked={this.props.dessert}
             onPress={() => this.props.filterDessert()}
           />
         </View>
-        <ScrollView>
+        <ScrollView style={{ width: "98%", marginLeft: 3.5 }}>
           <MenuItemContainer />
         </ScrollView>
 
@@ -64,7 +72,7 @@ class Wrapper extends React.Component {
           <TouchableHighlight
             style={{
               backgroundColor: "black",
-              height: 50
+              height: 50,
             }}
             onPress={() => {
               this.props.hideModal();
@@ -73,7 +81,7 @@ class Wrapper extends React.Component {
             <Text
               style={{
                 color: "white",
-                fontSize: 50
+                fontSize: 50,
               }}
             >
               Hide Modal
@@ -81,6 +89,23 @@ class Wrapper extends React.Component {
           </TouchableHighlight>
           <ARContainer />
         </Modal>
+        <TouchableHighlight
+          onPress={() => {
+            Actions.basket();
+          }}
+          style={{
+            height: 30,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 20,
+              color: "black",
+            }}
+          >
+            View basket
+          </Text>
+        </TouchableHighlight>
       </View>
     );
   }
