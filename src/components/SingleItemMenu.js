@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 });
 const Container = styled(View)`
   margin: 0 5px 5px 5px;
-  background-color: #e8e9eb;
+  background-color: white;
   flex-direction: column;
   border-radius: 0px;
   color: #464646;
