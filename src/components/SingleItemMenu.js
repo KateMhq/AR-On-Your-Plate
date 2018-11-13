@@ -150,20 +150,11 @@ export default class SingleItemMenu extends React.Component {
           icon={{ name: "add-shopping-cart" }}
           title="Add to basket"
           onPress={() => {
-            this.props.currentOrder.map(dish => {
-              if (this.props.currentOrder.hasOwnProperty(dish.name)) {
-                return this.props.addToQuantity(
-                  this.props.dish.id,
-                  this.props.dish.quantity
-                );
-              } else {
-                return this.props.addToBasket(
-                  this.props.dish.id,
-                  this.props.dish.quantity,
-                  this.props.dish.name
-                );
-              }
-            });
+            return this.props.addToBasket(
+              this.props.dish.id,
+              this.props.dish.quantity,
+              this.props.dish.name
+            );
           }}
         />
       </Container>

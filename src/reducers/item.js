@@ -105,7 +105,7 @@ const initialState = {
   currentDish: {
     url: "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut",
   },
-  currentOrder: [{ id: "", quantity: 0, name: "" }],
+  currentOrder: {},
 };
 
 function item(state = initialState, action) {
@@ -138,18 +138,25 @@ function item(state = initialState, action) {
       return decNewState;
 
     case "ADD_TO_BASKET":
-      return Object.assign({}, state, {
-        currentOrder: state.currentOrder.concat([
-          {
+      const updatedBasket = Object.assign({
+        currentOrder: Object.assign({}, state.currentOrder, {
+          [action.id]: Object.assign({}, state.currentOrder[action.id], {
             id: action.id,
-            quantity: action.quantity,
+            quantity: state.currentOrder[action.id]
+              ? state.currentOrder[action.id].quantity + action.quantity
+              : action.quantity,
             name: action.name,
-          },
-        ]),
+          }),
+        }),
         dishes: dishesZero,
       });
-    case "ADD_TO_QUANTITY":
-      return {};
+      const updatedBasketState = Object.assign({}, state, updatedBasket);
+      return updatedBasketState;
+    // case "ADD_TO_QUANTITY":
+    // const currentQuantity =
+    //   return Object.assign({}, state, {
+    //     currentOrder: state.currentOrder.map
+    //   });
     default:
       return state;
   }

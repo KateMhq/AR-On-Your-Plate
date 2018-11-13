@@ -83,10 +83,6 @@ export function addToBasket(id, quantity, name) {
   return { type: "ADD_TO_BASKET", name, quantity, id };
 }
 
-export function addToQuantity(id, quantity) {
-  return { type: "ADD_TO_QUANTITY", id, quantity };
-}
-
 // export const addToBasket = (id, quantity) => (
 //   {
 //     type: 'ADD_TO_BASKET',
