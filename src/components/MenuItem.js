@@ -22,8 +22,8 @@ export default class MenuItem extends React.Component {
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
-                addQuantity={this.props.addQuantity}
-                decreaseQuantity={this.props.decreaseQuantity}
+                  addQuantity={this.props.addQuantity}
+                  decreaseQuantity={this.props.decreaseQuantity}
                   key={dish.name}
                   dish={dish}
                 />
@@ -36,8 +36,8 @@ export default class MenuItem extends React.Component {
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
-                addQuantity={this.props.addQuantity}
-              decreaseQuantity={this.props.decreaseQuantity}
+                  addQuantity={this.props.addQuantity}
+                  decreaseQuantity={this.props.decreaseQuantity}
                   key={dish.name}
                   dish={dish}
                 />
@@ -50,8 +50,8 @@ export default class MenuItem extends React.Component {
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
-                addQuantity={this.props.addQuantity}
-              decreaseQuantity={this.props.decreaseQuantity}
+                  addQuantity={this.props.addQuantity}
+                  decreaseQuantity={this.props.decreaseQuantity}
                   key={dish.name}
                   dish={dish}
                 />
@@ -63,8 +63,8 @@ export default class MenuItem extends React.Component {
                 currentDish={this.props.currentDish}
                 setModalVisible={this.props.setModalVisible}
                 updateDish={this.props.updateDish}
-              addQuantity={this.props.addQuantity}
-              decreaseQuantity={this.props.decreaseQuantity}
+                addQuantity={this.props.addQuantity}
+                decreaseQuantity={this.props.decreaseQuantity}
                 key={dish.name}
                 dish={dish}
               />

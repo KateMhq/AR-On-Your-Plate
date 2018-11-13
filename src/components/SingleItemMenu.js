@@ -121,35 +121,37 @@ export default class SingleItemMenu extends React.Component {
         <PriceWithButtons>
           <Price>£{this.props.dish.price.toFixed(2)}</Price>
 
-            <ButtonsWithQuantity>
-              <MinusAndQuantityDisplayNone>
-              {this.props.dish.quantity < 1 ? null :
-                <MinusBtn style={{ backgroundColor: this.props.dish.color }} onPress={event => {
-                  this.props.decreaseQuantity(1, this.props.dish.name)
-                }}>
+          <ButtonsWithQuantity>
+            <MinusAndQuantityDisplayNone>
+              {this.props.dish.quantity < 1 ? null : (
+                <MinusBtn
+                  style={{ backgroundColor: this.props.dish.color }}
+                  onPress={event => {
+                    this.props.decreaseQuantity(1, this.props.dish.name);
+                  }}
+                >
                   <BtnText>-</BtnText>
-                </Btn>
-              }
-                <Quantity>{this.props.dish.quantity}</Quantity>
-              </MinusAndQuantityDisplayNone>
-              <AddBtn style={{ backgroundColor: this.props.dish.color }} onPress={event => {
-                this.props.addQuantity(1, this.props.dish.name)
-              }}>
-                <BtnText>+</BtnText>
-              </Btn>
-            </ButtonsWithQuantity>
-          </PriceWithButtons>
-          <Button
-            raised
-            icon={{name: 'add-shopping-cart'}} 
-            title='Add to basket'
-            onPress={() => alert('Added to cart')}
-            />
-        </Container>
-      </TouchableHighlight>
-      
-
+                </MinusBtn>
+              )}
+              <Quantity>{this.props.dish.quantity}</Quantity>
+            </MinusAndQuantityDisplayNone>
+            <AddBtn
+              style={{ backgroundColor: this.props.dish.color }}
+              onPress={event => {
+                this.props.addQuantity(1, this.props.dish.name);
+              }}
+            >
+              <BtnText>+</BtnText>
+            </AddBtn>
+          </ButtonsWithQuantity>
+        </PriceWithButtons>
+        <Button
+          raised
+          icon={{ name: "add-shopping-cart" }}
+          title="Add to basket"
+          onPress={() => alert("Added to cart")}
+        />
+      </Container>
     );
   }
 }
-
