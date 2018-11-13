@@ -100,12 +100,12 @@ export default class SingleItemMenu extends React.Component {
   render() {
     return (
       <Container>
-        <Title style={{ backgroundColor: this.props.color }}>
-          {this.props.dish.name}
+        <Title >
+          {this.props.dish.dish_name}
         </Title>
         <TouchableHighlight
           onPress={event => {
-            this.props.updateDish(this.props.dish.url);
+            this.props.updateDish(this.props.dish.obj,this.props.dish.mtl);
             this.props.setModalVisible();
           }}
           style={styles.container}
@@ -119,7 +119,7 @@ export default class SingleItemMenu extends React.Component {
         </Description>
 
         <PriceWithButtons>
-          <Price>£{this.props.dish.price.toFixed(2)}</Price>
+          <Price>£{this.props.dish.price}</Price>
 
           <ButtonsWithQuantity>
             <MinusAndQuantityDisplayNone>

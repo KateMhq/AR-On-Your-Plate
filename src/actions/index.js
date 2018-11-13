@@ -19,10 +19,11 @@ export function updateTurkeyMtl(mtl) {
   };
 }
 
-export function updateDish(url) {
+export function updateDish(obj,mtl) {
   return {
     type: "UPDATE_DISH",
-    url,
+    obj,
+    mtl
   };
 }
 
@@ -61,6 +62,20 @@ export function filterDessert() {
   return {
     type: "FILTER_DESSERT",
   };
+}
+
+export function updateInitialDishesState(){
+  return (dispatch) => {
+    return fetch('https://project-ar-on-your-plate.herokuapp.com/dishes')
+    .then(data => data.json())
+    .then(data => {
+      dispatch({
+        type: "UPDATE_INITIAL_DISHES_STATE",
+        dishesArr: data
+      })
+    })
+    .catch(error => error.message);
+  }
 }
 
 //Jamal (Basket)

@@ -8,6 +8,7 @@ import {
   decreaseQuantity,
   addToBasket,
   addToQuantity,
+  updateInitialDishesState
 } from "../actions";
 
 function mapStateToProps(state) {
@@ -23,9 +24,10 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
+    updateInitialDishesState: () => dispatch(updateInitialDishesState()),
     setModalVisible: () => dispatch(setModalVisible()),
 
-    updateDish: url => dispatch(updateDish(url)),
+      updateDish: (obj, mtl) => dispatch(updateDish(obj, mtl)),
     addQuantity: (quantity, dish) => dispatch(addQuantity(quantity, dish)),
     decreaseQuantity: (quantity, dish) =>
       dispatch(decreaseQuantity(quantity, dish)),

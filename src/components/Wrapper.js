@@ -14,6 +14,7 @@ import { Actions } from "react-native-router-flux";
 import { Button, Icon, CheckBox } from "react-native-elements";
 
 class Wrapper extends React.Component {
+
   render() {
     return (
       <View
@@ -27,7 +28,7 @@ class Wrapper extends React.Component {
           <Button
             raised
             icon={{name: 'shopping-cart'}}
-            title='(1)' 
+            title='(1)'
             onPress={() => {
               Actions.basket();
             }}
