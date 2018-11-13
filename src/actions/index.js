@@ -19,11 +19,11 @@ export function updateTurkeyMtl(mtl) {
   };
 }
 
-export function updateDish(obj,mtl) {
+export function updateDish(obj, mtl) {
   return {
     type: "UPDATE_DISH",
     obj,
-    mtl
+    mtl,
   };
 }
 
@@ -64,18 +64,18 @@ export function filterDessert() {
   };
 }
 
-export function updateInitialDishesState(){
-  return (dispatch) => {
-    return fetch('https://project-ar-on-your-plate.herokuapp.com/dishes')
-    .then(data => data.json())
-    .then(data => {
-      dispatch({
-        type: "UPDATE_INITIAL_DISHES_STATE",
-        dishesArr: data
+export function updateInitialDishesState() {
+  return dispatch => {
+    return fetch("https://project-ar-on-your-plate.herokuapp.com/dishes")
+      .then(data => data.json())
+      .then(data => {
+        dispatch({
+          type: "UPDATE_INITIAL_DISHES_STATE",
+          dishesArr: data,
+        });
       })
-    })
-    .catch(error => error.message);
-  }
+      .catch(error => error.message);
+  };
 }
 
 //Jamal (Basket)

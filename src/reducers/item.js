@@ -1,8 +1,10 @@
 const initialState = {
   dishes: {},
   currentDish: {
-    obj: "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut/model.obj",
-    mtl: "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut/materials.mtl"
+    obj:
+      "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut/model.obj",
+    mtl:
+      "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut/materials.mtl",
   },
   currentOrder: {},
 };
@@ -10,21 +12,23 @@ const initialState = {
 function item(state = initialState, action) {
   switch (action.type) {
     case "UPDATE_INITIAL_DISHES_STATE":
-
-      let i=0;
+      let i = 0;
       let dishesArr = action.dishesArr;
 
-      const dishesObj = Object.assign({}, ...dishesArr.map(item => ({[i++]: item})))
+      const dishesObj = Object.assign(
+        {},
+        ...dishesArr.map(item => ({ [item.id]: item }))
+      );
 
-      return Object.assign({}, state, { dishes: dishesObj })
+      return Object.assign({}, state, { dishes: dishesObj });
 
     case "UPDATE_DISH":
-
-      return Object.assign({}, state, { currentDish: {
-                                      obj:action.obj,
-                                      mtl:action.mtl
-                                     }
-                                });
+      return Object.assign({}, state, {
+        currentDish: {
+          obj: action.obj,
+          mtl: action.mtl,
+        },
+      });
     case "ADD_QUANTITY":
       const newQuan = state.dishes[action.dish].quantity + 1;
       const newObj = Object.assign({
@@ -61,7 +65,6 @@ function item(state = initialState, action) {
             name: action.name,
           }),
         }),
-        dishes: dishesZero,
       });
       const updatedBasketState = Object.assign({}, state, updatedBasket);
       return updatedBasketState;

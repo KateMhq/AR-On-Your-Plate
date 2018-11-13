@@ -100,12 +100,12 @@ export default class SingleItemMenu extends React.Component {
   render() {
     return (
       <Container>
-        <Title >
+        <Title style={{ backgroundColor: this.props.color }}>
           {this.props.dish.dish_name}
         </Title>
         <TouchableHighlight
           onPress={event => {
-            this.props.updateDish(this.props.dish.obj,this.props.dish.mtl);
+            this.props.updateDish(this.props.dish.obj, this.props.dish.mtl);
             this.props.setModalVisible();
           }}
           style={styles.container}
@@ -127,7 +127,7 @@ export default class SingleItemMenu extends React.Component {
                 <MinusBtn
                   style={{ backgroundColor: this.props.color }}
                   onPress={event => {
-                    this.props.decreaseQuantity(1, this.props.dish.name);
+                    this.props.decreaseQuantity(1, this.props.dish.id);
                   }}
                 >
                   <BtnText>-</BtnText>
@@ -138,7 +138,7 @@ export default class SingleItemMenu extends React.Component {
             <AddBtn
               style={{ backgroundColor: this.props.color }}
               onPress={event => {
-                this.props.addQuantity(1, this.props.dish.name);
+                this.props.addQuantity(1, this.props.dish.id);
               }}
             >
               <BtnText>+</BtnText>
@@ -153,7 +153,7 @@ export default class SingleItemMenu extends React.Component {
             return this.props.addToBasket(
               this.props.dish.id,
               this.props.dish.quantity,
-              this.props.dish.name
+              this.props.dish.dish_name
             );
           }}
         />
