@@ -125,7 +125,7 @@ export default class SingleItemMenu extends React.Component {
             <MinusAndQuantityDisplayNone>
               {this.props.dish.quantity < 1 ? null : (
                 <MinusBtn
-                  style={{ backgroundColor: this.props.dish.color }}
+                  style={{ backgroundColor: this.props.color }}
                   onPress={event => {
                     this.props.decreaseQuantity(1, this.props.dish.name);
                   }}
@@ -136,7 +136,7 @@ export default class SingleItemMenu extends React.Component {
               <Quantity>{this.props.dish.quantity}</Quantity>
             </MinusAndQuantityDisplayNone>
             <AddBtn
-              style={{ backgroundColor: this.props.dish.color }}
+              style={{ backgroundColor: this.props.color }}
               onPress={event => {
                 this.props.addQuantity(1, this.props.dish.name);
               }}
@@ -149,7 +149,13 @@ export default class SingleItemMenu extends React.Component {
           raised
           icon={{ name: "add-shopping-cart" }}
           title="Add to basket"
-          onPress={() => alert("Added to cart")}
+          onPress={() => {
+            return this.props.addToBasket(
+              this.props.dish.id,
+              this.props.dish.quantity,
+              this.props.dish.name
+            );
+          }}
         />
       </Container>
     );

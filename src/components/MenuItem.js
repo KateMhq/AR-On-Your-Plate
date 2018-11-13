@@ -24,6 +24,7 @@ export default class MenuItem extends React.Component {
             if (dish.course == "starter") {
               return (
                 <SingleItemMenu
+                  currentOrder={this.props.currentOrder}
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
@@ -31,6 +32,9 @@ export default class MenuItem extends React.Component {
                   decreaseQuantity={this.props.decreaseQuantity}
                   key={dish.dish_name}
                   dish={dish}
+                  color="#7DCE82"
+                  addToBasket={this.props.addToBasket}
+                  addToQuantity={this.props.addtoQuantity}
                 />
               );
             }
@@ -38,20 +42,7 @@ export default class MenuItem extends React.Component {
             if (dish.course == "main") {
               return (
                 <SingleItemMenu
-                  currentDish={this.props.currentDish}
-                  setModalVisible={this.props.setModalVisible}
-                  updateDish={this.props.updateDish}
-                  addQuantity={this.props.addQuantity}
-                  decreaseQuantity={this.props.decreaseQuantity}
-                  key={dish.name}
-                  dish={dish}
-                />
-              );
-            }
-          } else if (this.props.dessert == true) {
-            if (dish.course == "dessert") {
-              return (
-                <SingleItemMenu
+                  currentOrder={this.props.currentOrder}
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
@@ -59,21 +50,30 @@ export default class MenuItem extends React.Component {
                   decreaseQuantity={this.props.decreaseQuantity}
                   key={dish.dish_name}
                   dish={dish}
+                  color="#FF8360"
+                  addToBasket={this.props.addToBasket}
+                  addToQuantity={this.props.addtoQuantity}
                 />
               );
             }
-          } else {
-            return (
-              <SingleItemMenu
-                currentDish={this.props.currentDish}
-                setModalVisible={this.props.setModalVisible}
-                updateDish={this.props.updateDish}
-                addQuantity={this.props.addQuantity}
-                decreaseQuantity={this.props.decreaseQuantity}
-                key={dish.dish_name}
-                dish={dish}
-              />
-            );
+          } else if (this.props.dessert == true) {
+            if (dish.course == "dessert") {
+              return (
+                <SingleItemMenu
+                  currentOrder={this.props.currentOrder}
+                  currentDish={this.props.currentDish}
+                  setModalVisible={this.props.setModalVisible}
+                  updateDish={this.props.updateDish}
+                  addQuantity={this.props.addQuantity}
+                  decreaseQuantity={this.props.decreaseQuantity}
+                  key={dish.dish_name}
+                  dish={dish}
+                  color="#E8E288"
+                  addToBasket={this.props.addToBasket}
+                  addToQuantity={this.props.addtoQuantity}
+                />
+              );
+            }
           }
         })}
       </View>
