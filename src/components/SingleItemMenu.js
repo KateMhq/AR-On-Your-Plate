@@ -100,7 +100,7 @@ export default class SingleItemMenu extends React.Component {
   render() {
     return (
       <Container>
-        <Title style={{ backgroundColor: this.props.dish.color }}>
+        <Title style={{ backgroundColor: this.props.color }}>
           {this.props.dish.name}
         </Title>
         <TouchableHighlight

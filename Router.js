@@ -2,7 +2,7 @@ import React from "react";
 import { Scene, Router } from "react-native-router-flux";
 import WrapperContainer from "./src/containers/WrapperContainer";
 import Landing from "./src/components/Landing";
-import Basket from "./src/components/Basket";
+import BasketContainer from "./src/containers/BasketContainer";
 const RouterComponent = () => {
   return (
     <Router>
@@ -15,7 +15,7 @@ const RouterComponent = () => {
           <Scene key="menu" component={WrapperContainer} title="Menu" />
           <Scene
             key="basket"
-            component={Basket}
+            component={BasketContainer}
             title="Your Basket"
             rightTitle="Empty Basket"
             onRight={() => {}}

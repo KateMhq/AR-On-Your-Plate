@@ -2,7 +2,9 @@ import Basket from "../components/Basket";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    dishes: state.item.dishes,
+  };
 }
 
 const mapDispatchToProps = dispatch => {

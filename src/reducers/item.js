@@ -10,7 +10,6 @@ const initialState = {
         "Crispy Soft Shell Crab with a delicate burst of Flying Fish Roe, Avocado and a dash of Mayonnaise",
       course: "starter",
       price: 4.5,
-      color: "#7DCE82",
       quantity: 0,
     },
     Tacos: {
@@ -23,7 +22,7 @@ const initialState = {
         "Tender hand-shredded brisket & flank beef slowly cooked in garlic spiuces & pasilla chile",
       course: "main",
       price: 6.0,
-      color: "#FF8360",
+
       quantity: 0,
     },
     Ramen: {
@@ -36,7 +35,7 @@ const initialState = {
         "Shouyu Tonkotsu large size, all the toppings, extra egg and spicy miso pork",
       course: "main",
       price: 5.0,
-      color: "#FF8360",
+
       quantity: 0,
     },
     HighTea: {
@@ -48,13 +47,13 @@ const initialState = {
       description: "I'm not really sure what high tea is...",
       course: "dessert",
       price: 5.55,
-      color: "#E8E288",
       quantity: 0,
     },
   },
   currentDish: {
     url: "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut",
   },
+  currentOrder: {},
 };
 
 function item(state = initialState, action) {
