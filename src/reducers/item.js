@@ -11,6 +11,7 @@ const initialState = {
       course: "starter",
       price: 4.5,
       color: "#7DCE82",
+          quantity: 0
     },
     tacos: {
       id: 2,
@@ -23,6 +24,7 @@ const initialState = {
       course: "main",
       price: 6.0,
       color: "#FF8360",
+            quantity: 0
     },
     ramen: {
       id: 3,
@@ -35,6 +37,7 @@ const initialState = {
       course: "main",
       price: 5.0,
       color: "#FF8360",
+            quantity: 0
     },
     highTea: {
       id: 4,
@@ -46,19 +49,41 @@ const initialState = {
       course: "dessert",
       price: 5.55,
       color: "#E8E288",
+            quantity: 0
     },
+
   },
   currentDish: {
     url: "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut",
   },
 };
 
-function item(state = initialState, action) {
-  switch (action.type) {
-    case "UPDATE_DISH":
-      return Object.assign({}, state, { currentDish: action.url });
-    default:
-      return state;
+
+  function item(state = initialState, action) {
+    switch (action.type) {
+      case "UPDATE_DISH":
+        return Object.assign({}, state, { currentDish: action.url });
+        case 'ADD_QUANTITY':
+        const newQuan = state.dishes[action.dish].quantity + 1;
+        const newObj = Object.assign({
+          dishes: Object.assign({}, state.dishes, { [action.dish]: Object.assign({}, state.dishes[action.dish], { quantity: newQuan}) })
+        })
+        const newState = Object.assign({}, state, newObj);
+        console.log(newState)
+        return newState;
+
+        case 'DECREASE_QUANTITY':
+      
+        const decQuan = state.dishes[action.dish].quantity - 1
+        const decNewObj = Object.assign({
+          dishes: Object.assign({}, state.dishes, { [action.dish]: Object.assign({}, state.dishes[action.dish], { quantity: decQuan}) })
+        })
+        const decNewState = Object.assign({}, state, decNewObj)
+        return decNewState
+      default:
+        return state;
+    }
+
   }
 }
 

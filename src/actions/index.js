@@ -62,3 +62,47 @@ export function filterDessert() {
     type: "FILTER_DESSERT",
   };
 }
+
+//Jamal (Basket)
+export function addQuantity(quantity,dish){
+  return{
+    type: 'ADD_QUANTITY',
+    quantity,
+    dish
+  }
+}
+export function decreaseQuantity(quantity,dish){
+  return{
+    type: 'DECREASE_QUANTITY',
+    quantity,
+    dish
+  }
+}
+
+
+
+
+// export const addToBasket = (id, quantity) => (
+//   {
+//     type: 'ADD_TO_BASKET',
+//     id,
+//     quantity
+//   }
+//  );
+ 
+//  // removeFromCart
+//  export const removeFromBasket = (id) => (
+//   {
+//     type: 'REMOVE_FROM_BASKET',
+//     id,
+//   }
+//  );
+ 
+//  // updateCartItem
+//  export const updateBasketItemQuantity = (id, quantity) => (
+//   {
+//     type: 'UPDATE_BASKET_ITEM',
+//     id,
+//     quantity
+//   }
+//  );

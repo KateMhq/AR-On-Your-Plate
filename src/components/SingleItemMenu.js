@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
 } from "react-native";
+import { Button } from "react-native-elements";
 import styled from "styled-components/native";
 
 const styles = StyleSheet.create({
@@ -120,20 +121,35 @@ export default class SingleItemMenu extends React.Component {
         <PriceWithButtons>
           <Price>£{this.props.dish.price.toFixed(2)}</Price>
 
-          <ButtonsWithQuantity>
-            <MinusAndQuantityDisplayNone>
-              <MinusBtn style={{ backgroundColor: this.props.dish.color }}>
-                <BtnText>-</BtnText>
-              </MinusBtn>
-              <Quantity>0</Quantity>
-            </MinusAndQuantityDisplayNone>
+            <ButtonsWithQuantity>
+              <MinusAndQuantityDisplayNone>
+              {this.props.dish.quantity < 1 ? null :
+                <MinusBtn style={{ backgroundColor: this.props.dish.color }} onPress={event => {
+                  this.props.decreaseQuantity(1, this.props.dish.name)
+                }}>
+                  <BtnText>-</BtnText>
+                </Btn>
+              }
+                <Quantity>{this.props.dish.quantity}</Quantity>
+              </MinusAndQuantityDisplayNone>
+              <AddBtn style={{ backgroundColor: this.props.dish.color }} onPress={event => {
+                this.props.addQuantity(1, this.props.dish.name)
+              }}>
+                <BtnText>+</BtnText>
+              </Btn>
+            </ButtonsWithQuantity>
+          </PriceWithButtons>
+          <Button
+            raised
+            icon={{name: 'add-shopping-cart'}} 
+            title='Add to basket'
+            onPress={() => alert('Added to cart')}
+            />
+        </Container>
+      </TouchableHighlight>
+      
 
-            <AddBtn style={{ backgroundColor: this.props.dish.color }}>
-              <BtnText>+</BtnText>
-            </AddBtn>
-          </ButtonsWithQuantity>
-        </PriceWithButtons>
-      </Container>
     );
   }
 }
+
