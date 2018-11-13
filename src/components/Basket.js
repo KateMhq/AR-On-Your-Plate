@@ -1,20 +1,22 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
+import styled from "styled-components/native";
 
 export default class Basket extends React.Component {
   render() {
+    const Title = styled(Text)`
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+  `;
     return (
       <View
         style={{
-          flexDirection: "column",
-          justifyContent: "space-around",
-          height: "100%",
-          flex: 1,
+            
         }}
       >
-        <Text>Your Order</Text>
-
-        <Text>Delivery charge: £5.00</Text>
+        <Title style={{ fontSize: 30 }}>Your Order</Title>
+        <Title style={{ fontSize: 30 }}>Delivery charge: £5.00</Title>
         {/* JUST HERE FOR EXAMPLE
               
               {Object.keys(this.props.order).map(item => {

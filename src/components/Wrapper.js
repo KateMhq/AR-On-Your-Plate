@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import MenuItemContainer from "../containers/MenuItemContainer";
 import { Actions } from "react-native-router-flux";
-import { CheckBox } from "react-native-elements";
+import { Button, Icon, CheckBox } from "react-native-elements";
 
 class Wrapper extends React.Component {
   render() {
@@ -23,24 +23,14 @@ class Wrapper extends React.Component {
           flex: 1
         }}
       >
-        <TouchableHighlight
-          onPress={() => {
-            Actions.basket();
-          }}
-          style={{
-            backgroundColor: "black",
-            height: 50
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 50,
-              color: "white"
+          <Button
+            raised
+            icon={{name: 'shopping-cart'}}
+            title='(1)' 
+            onPress={() => {
+              Actions.basket();
             }}
-          >
-            View basket
-          </Text>
-        </TouchableHighlight>
+            />
         <Text style={{ fontSize: 30 }}>Filter By: </Text>
         <View style={{ flexDirection: "row" }}>
           <CheckBox

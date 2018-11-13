@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
   TouchableOpacity
 } from "react-native";
+import { Button } from "react-native-elements";
 import styled from "styled-components/native";
 
 const styles = StyleSheet.create({
@@ -105,19 +106,32 @@ export default class SingleItemMenu extends React.Component {
 
             <ButtonsWithQuantity>
               <MinusAndQuantityDisplayNone>
-                <Btn>
+              {this.props.dish.quantity < 1 ? null :
+                <Btn onPress={event => {
+                  this.props.decreaseQuantity(1, this.props.dish.name)
+                }}>
                   <BtnText>-</BtnText>
                 </Btn>
-                <Quantity>0</Quantity>
+              }
+                <Quantity>{this.props.dish.quantity}</Quantity>
               </MinusAndQuantityDisplayNone>
-
-              <Btn>
+              <Btn onPress={event => {
+                this.props.addQuantity(1, this.props.dish.name)
+              }}>
                 <BtnText>+</BtnText>
               </Btn>
             </ButtonsWithQuantity>
           </PriceWithButtons>
+          <Button
+            raised
+            icon={{name: 'add-shopping-cart'}} 
+            title='Add to basket'
+            onPress={() => alert('Added to cart')}
+            />
         </Container>
       </TouchableHighlight>
+      
     );
   }
 }
+
