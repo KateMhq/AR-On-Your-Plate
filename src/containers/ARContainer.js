@@ -21,7 +21,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateInitialDishesState: () => dispatch(updateInitialDishesState()),
+  
     updateCameraPermission: () => dispatch(updateCameraPermission()),
     updateTurkeyObj: obj => dispatch(updateTurkeyObj(obj)),
     updateTurkeyMtl: obj => dispatch(updateTurkeyMtl(obj)),

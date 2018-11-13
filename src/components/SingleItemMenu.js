@@ -119,7 +119,7 @@ export default class SingleItemMenu extends React.Component {
         </Description>
 
         <PriceWithButtons>
-          <Price>£{this.props.dish.price.toFixed(2)}</Price>
+          <Price>£{this.props.dish.price}</Price>
 
           <ButtonsWithQuantity>
             <MinusAndQuantityDisplayNone>

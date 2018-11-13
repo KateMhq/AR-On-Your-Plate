@@ -7,6 +7,7 @@ import {
   filterStarter,
   filterMain,
   filterDessert,
+  updateInitialDishesState
 } from "../actions";
 
 function mapStateToProps(state) {
@@ -24,6 +25,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
+  
     hideModal: () => dispatch(hideModal()),
     receiveCourse: () => dispatch(receiveCourse(course)),
     filterStarter: () => dispatch(filterStarter()),

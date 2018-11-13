@@ -3,7 +3,12 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import SingleItemMenu from "./SingleItemMenu";
 
 export default class MenuItem extends React.Component {
+  componentDidMount(){
+    this.props.updateInitialDishesState();
+  }
+
   render() {
+    console.log('dishes', this.props.dishes)
     return (
       <View
         style={{
@@ -24,7 +29,7 @@ export default class MenuItem extends React.Component {
                   updateDish={this.props.updateDish}
                   addQuantity={this.props.addQuantity}
                   decreaseQuantity={this.props.decreaseQuantity}
-                  key={dish.name}
+                  key={dish.dish_name}
                   dish={dish}
                 />
               );
@@ -52,7 +57,7 @@ export default class MenuItem extends React.Component {
                   updateDish={this.props.updateDish}
                   addQuantity={this.props.addQuantity}
                   decreaseQuantity={this.props.decreaseQuantity}
-                  key={dish.name}
+                  key={dish.dish_name}
                   dish={dish}
                 />
               );
@@ -65,7 +70,7 @@ export default class MenuItem extends React.Component {
                 updateDish={this.props.updateDish}
                 addQuantity={this.props.addQuantity}
                 decreaseQuantity={this.props.decreaseQuantity}
-                key={dish.name}
+                key={dish.dish_name}
                 dish={dish}
               />
             );

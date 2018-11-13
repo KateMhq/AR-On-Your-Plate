@@ -21,13 +21,10 @@ export default class ARDisplay extends React.Component {
     console.log(props);
   }
 
-componentWillMount(){
-  this.props.updateInitialDishesState();
-}
+
   async componentDidMount() {
     const { updateCameraPermission } = this.props;
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
-    console.log(status);
     updateCameraPermission();
     THREE.suppressExpoWarnings();
   }

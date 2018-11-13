@@ -11,11 +11,14 @@ const initialState = {
 function item(state = initialState, action) {
   switch (action.type) {
     case "UPDATE_INITIAL_DISHES_STATE":
-      const dishes=fetch('https://project-ar-on-your-plate.herokuapp.com/dishes')
-      .then(data => data.json())
-      .then(data => data)
-      .catch(error => error.message);
-      return Object.assign({}, state, { dishes: {...dishes} });
+
+      let i=0;
+      let dishesArr = action.dishesArr
+
+      const dishesObj = Object.assign({}, ...dishesArr.map(item => ({[i++]: item})))
+
+      return Object.assign({}, state, { dishes: dishesObj })
+
     case "UPDATE_DISH":
 
       return Object.assign({}, state, { currentDish: {

@@ -65,8 +65,16 @@ export function filterDessert() {
 }
 
 export function updateInitialDishesState(){
-  return {
-    type: "UPDATE_INITIAL_DISHES_STATE",
+  return (dispatch) => {
+    return fetch('https://project-ar-on-your-plate.herokuapp.com/dishes')
+    .then(data => data.json())
+    .then(data => {
+      dispatch({
+        type: "UPDATE_INITIAL_DISHES_STATE",
+        dishesArr: data
+      })
+    })
+    .catch(error => error.message);
   }
 }
 
