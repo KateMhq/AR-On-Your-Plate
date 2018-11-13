@@ -4,6 +4,7 @@ const initialState = {
   starter: false,
   main: false,
   dessert: false,
+
 };
 
 function wrapper(state = initialState, action) {
@@ -20,6 +21,7 @@ function wrapper(state = initialState, action) {
       return Object.assign({}, state, { main: !state.main });
     case "FILTER_DESSERT":
       return Object.assign({}, state, { dessert: !state.dessert });
+      
     default:
       return state;
   }
