@@ -19,6 +19,7 @@ export default class MenuItem extends React.Component {
             if (dish.course == "starter") {
               return (
                 <SingleItemMenu
+                  currentOrder={this.props.currentOrder}
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
@@ -28,6 +29,7 @@ export default class MenuItem extends React.Component {
                   dish={dish}
                   color="#7DCE82"
                   addToBasket={this.props.addToBasket}
+                  addToQuantity={this.props.addtoQuantity}
                 />
               );
             }
@@ -35,6 +37,7 @@ export default class MenuItem extends React.Component {
             if (dish.course == "main") {
               return (
                 <SingleItemMenu
+                  currentOrder={this.props.currentOrder}
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
@@ -44,6 +47,7 @@ export default class MenuItem extends React.Component {
                   dish={dish}
                   color="#FF8360"
                   addToBasket={this.props.addToBasket}
+                  addToQuantity={this.props.addtoQuantity}
                 />
               );
             }
@@ -51,6 +55,7 @@ export default class MenuItem extends React.Component {
             if (dish.course == "dessert") {
               return (
                 <SingleItemMenu
+                  currentOrder={this.props.currentOrder}
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
@@ -60,6 +65,7 @@ export default class MenuItem extends React.Component {
                   dish={dish}
                   color="#E8E288"
                   addToBasket={this.props.addToBasket}
+                  addToQuantity={this.props.addtoQuantity}
                 />
               );
             }
@@ -67,6 +73,7 @@ export default class MenuItem extends React.Component {
             if (dish.course == "starter") {
               return (
                 <SingleItemMenu
+                  currentOrder={this.props.currentOrder}
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
@@ -76,6 +83,7 @@ export default class MenuItem extends React.Component {
                   dish={dish}
                   color="#7DCE82"
                   addToBasket={this.props.addToBasket}
+                  addToQuantity={this.props.addtoQuantity}
                 />
               );
             } else if (dish.course == "main") {
@@ -90,11 +98,13 @@ export default class MenuItem extends React.Component {
                   dish={dish}
                   color="#FF8360"
                   addToBasket={this.props.addToBasket}
+                  addToQuantity={this.props.addtoQuantity}
                 />
               );
             } else if (dish.course == "dessert") {
               return (
                 <SingleItemMenu
+                  currentOrder={this.props.currentOrder}
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
@@ -104,6 +114,7 @@ export default class MenuItem extends React.Component {
                   dish={dish}
                   color="#E8E288"
                   addToBasket={this.props.addToBasket}
+                  addToQuantity={this.props.addtoQuantity}
                 />
               );
             }

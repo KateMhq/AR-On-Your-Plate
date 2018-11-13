@@ -13,11 +13,12 @@ export default class Basket extends React.Component {
       <View style={{}}>
         <Title style={{ fontSize: 30 }}>Your Order</Title>
         <ScrollView>
-          <Text>{JSON.stringify(this.props.currentOrder)}</Text>
-          {this.props.currentOrder.map(dish => {
-            if (dish.quantity > 0) {
-              return <Text>{dish.name}</Text>;
-            }
+          {Object.values(this.props.currentOrder).map(dish => {
+            return (
+              <Text>
+                {dish.name} x {dish.quantity}
+              </Text>
+            );
           })}
         </ScrollView>
         <Title style={{ fontSize: 30 }}>Delivery charge: £5.00</Title>

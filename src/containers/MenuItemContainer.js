@@ -7,6 +7,7 @@ import {
   addQuantity,
   decreaseQuantity,
   addToBasket,
+  addToQuantity,
 } from "../actions";
 
 function mapStateToProps(state) {
@@ -30,6 +31,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(decreaseQuantity(quantity, dish)),
     addToBasket: (id, quantity, name) =>
       dispatch(addToBasket(id, quantity, name)),
+    addToQuantity: (id, quantity) => dispatch(addToQuantity(id, quantity)),
   };
 };
 
