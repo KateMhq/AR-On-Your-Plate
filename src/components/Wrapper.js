@@ -18,7 +18,7 @@ class Wrapper extends React.Component {
     return (
       <View
         style={{
-          backgroundColor: "#EEE6DC",
+          backgroundColor: "#F9FFEB",
           flexDirection: "column",
           flex: 1,
         }}

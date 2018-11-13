@@ -18,7 +18,7 @@ function Landing() {
   const MainView = styled(View)`
     height: 100%;
     margin: 0 5px 5px 5px;
-    background-color: #eee6dc;
+    background-color: #f6f2ed;
     flex-direction: column;
     border-radius: 15px;
     align-items: center;
@@ -30,7 +30,11 @@ function Landing() {
     font-size: 30px;
   `;
 
-  const TextDescription = styled(View)``;
+  const TextDescription = styled(View)`
+    font-size: 20px;
+    color: #464646;
+    font-weight: 600;
+  `;
 
   return (
     <MainView>
@@ -38,7 +42,7 @@ function Landing() {
         <Text>About Us</Text>
       </TextHeader>
       <TextDescription>
-        <Text>Click here to view our menu</Text>
+        <Text />
       </TextDescription>
       <TouchableHighlight
         onPress={() => {
