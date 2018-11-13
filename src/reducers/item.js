@@ -53,7 +53,7 @@ const initialState = {
   currentDish: {
     url: "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut",
   },
-  currentOrder: {},
+  currentOrder: [],
 };
 
 function item(state = initialState, action) {
@@ -84,6 +84,17 @@ function item(state = initialState, action) {
       });
       const decNewState = Object.assign({}, state, decNewObj);
       return decNewState;
+
+    case "ADD_TO_BASKET":
+      return Object.assign({}, state, {
+        currentOrder: state.currentOrder.concat([
+          {
+            id: action.id,
+            quantity: action.quantity,
+            name: action.name,
+          },
+        ]),
+      });
     default:
       return state;
   }

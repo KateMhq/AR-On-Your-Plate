@@ -27,6 +27,7 @@ export default class MenuItem extends React.Component {
                   key={dish.name}
                   dish={dish}
                   color="#7DCE82"
+                  addToBasket={this.props.addToBasket}
                 />
               );
             }
@@ -42,6 +43,7 @@ export default class MenuItem extends React.Component {
                   key={dish.name}
                   dish={dish}
                   color="#FF8360"
+                  addToBasket={this.props.addToBasket}
                 />
               );
             }
@@ -57,6 +59,7 @@ export default class MenuItem extends React.Component {
                   key={dish.name}
                   dish={dish}
                   color="#E8E288"
+                  addToBasket={this.props.addToBasket}
                 />
               );
             }
@@ -72,6 +75,7 @@ export default class MenuItem extends React.Component {
                   key={dish.name}
                   dish={dish}
                   color="#7DCE82"
+                  addToBasket={this.props.addToBasket}
                 />
               );
             } else if (dish.course == "main") {
@@ -85,6 +89,7 @@ export default class MenuItem extends React.Component {
                   key={dish.name}
                   dish={dish}
                   color="#FF8360"
+                  addToBasket={this.props.addToBasket}
                 />
               );
             } else if (dish.course == "dessert") {
@@ -98,6 +103,7 @@ export default class MenuItem extends React.Component {
                   key={dish.name}
                   dish={dish}
                   color="#E8E288"
+                  addToBasket={this.props.addToBasket}
                 />
               );
             }

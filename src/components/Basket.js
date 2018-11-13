@@ -13,14 +13,10 @@ export default class Basket extends React.Component {
       <View style={{}}>
         <Title style={{ fontSize: 30 }}>Your Order</Title>
         <ScrollView>
-          {Object.values(this.props.dishes).map(dish => {
-            dishPrice = dish.quantity * dish.price;
+          <Text>{JSON.stringify(this.props.currentOrder)}</Text>
+          {this.props.currentOrder.map(dish => {
             if (dish.quantity > 0) {
-              return (
-                <Text>
-                  {dish.name} x {dish.quantity} = £{dishPrice.toFixed(2)}
-                </Text>
-              );
+              return <Text>{dish.name}</Text>;
             }
           })}
         </ScrollView>

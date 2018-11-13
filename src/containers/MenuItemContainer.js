@@ -6,13 +6,14 @@ import {
   updateDish,
   addQuantity,
   decreaseQuantity,
+  addToBasket,
 } from "../actions";
 
 function mapStateToProps(state) {
   return {
     dishes: state.item.dishes,
     currentDish: state.item.currentDish,
-    currentOrder: state.item.order,
+    currentOrder: state.item.currentOrder,
     starter: state.wrapper.starter,
     main: state.wrapper.main,
     dessert: state.wrapper.dessert,
@@ -27,6 +28,8 @@ const mapDispatchToProps = dispatch => {
     addQuantity: (quantity, dish) => dispatch(addQuantity(quantity, dish)),
     decreaseQuantity: (quantity, dish) =>
       dispatch(decreaseQuantity(quantity, dish)),
+    addToBasket: (id, quantity, name) =>
+      dispatch(addToBasket(id, quantity, name)),
   };
 };
 

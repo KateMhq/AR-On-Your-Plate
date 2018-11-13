@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 function mapStateToProps(state) {
   return {
     dishes: state.item.dishes,
+    currentOrder: state.item.currentOrder,
   };
 }
 
