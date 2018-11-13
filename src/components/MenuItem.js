@@ -26,6 +26,8 @@ export default class MenuItem extends React.Component {
                   decreaseQuantity={this.props.decreaseQuantity}
                   key={dish.name}
                   dish={dish}
+                  color="#7DCE82"
+                  addToBasket={this.props.addToBasket}
                 />
               );
             }
@@ -40,6 +42,8 @@ export default class MenuItem extends React.Component {
                   decreaseQuantity={this.props.decreaseQuantity}
                   key={dish.name}
                   dish={dish}
+                  color="#FF8360"
+                  addToBasket={this.props.addToBasket}
                 />
               );
             }
@@ -54,21 +58,55 @@ export default class MenuItem extends React.Component {
                   decreaseQuantity={this.props.decreaseQuantity}
                   key={dish.name}
                   dish={dish}
+                  color="#E8E288"
+                  addToBasket={this.props.addToBasket}
                 />
               );
             }
           } else {
-            return (
-              <SingleItemMenu
-                currentDish={this.props.currentDish}
-                setModalVisible={this.props.setModalVisible}
-                updateDish={this.props.updateDish}
-                addQuantity={this.props.addQuantity}
-                decreaseQuantity={this.props.decreaseQuantity}
-                key={dish.name}
-                dish={dish}
-              />
-            );
+            if (dish.course == "starter") {
+              return (
+                <SingleItemMenu
+                  currentDish={this.props.currentDish}
+                  setModalVisible={this.props.setModalVisible}
+                  updateDish={this.props.updateDish}
+                  addQuantity={this.props.addQuantity}
+                  decreaseQuantity={this.props.decreaseQuantity}
+                  key={dish.name}
+                  dish={dish}
+                  color="#7DCE82"
+                  addToBasket={this.props.addToBasket}
+                />
+              );
+            } else if (dish.course == "main") {
+              return (
+                <SingleItemMenu
+                  currentDish={this.props.currentDish}
+                  setModalVisible={this.props.setModalVisible}
+                  updateDish={this.props.updateDish}
+                  addQuantity={this.props.addQuantity}
+                  decreaseQuantity={this.props.decreaseQuantity}
+                  key={dish.name}
+                  dish={dish}
+                  color="#FF8360"
+                  addToBasket={this.props.addToBasket}
+                />
+              );
+            } else if (dish.course == "dessert") {
+              return (
+                <SingleItemMenu
+                  currentDish={this.props.currentDish}
+                  setModalVisible={this.props.setModalVisible}
+                  updateDish={this.props.updateDish}
+                  addQuantity={this.props.addQuantity}
+                  decreaseQuantity={this.props.decreaseQuantity}
+                  key={dish.name}
+                  dish={dish}
+                  color="#E8E288"
+                  addToBasket={this.props.addToBasket}
+                />
+              );
+            }
           }
         })}
       </View>
