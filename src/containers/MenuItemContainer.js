@@ -15,7 +15,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = dispatch => {
   return {
     setModalVisible: () => dispatch(setModalVisible()),
-    updateDish: url => dispatch(updateDish(url)),
+    updateDish: (obj, mtl) => dispatch(updateDish(obj, mtl)),
   };
 };
 

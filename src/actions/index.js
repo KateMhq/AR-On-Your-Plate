@@ -19,10 +19,11 @@ export function updateTurkeyMtl(mtl) {
   };
 }
 
-export function updateDish(url) {
+export function updateDish(obj,mtl) {
   return {
     type: "UPDATE_DISH",
-    url,
+    obj,
+    mtl
   };
 }
 
@@ -61,4 +62,10 @@ export function filterDessert() {
   return {
     type: "FILTER_DESSERT",
   };
+}
+
+export function updateInitialDishesState(){
+  return {
+    type: "UPDATE_INITIAL_DISHES_STATE",
+  }
 }

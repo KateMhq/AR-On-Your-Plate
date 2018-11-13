@@ -21,6 +21,9 @@ export default class ARDisplay extends React.Component {
     console.log(props);
   }
 
+componentWillMount(){
+  this.props.updateInitialDishesState();
+}
   async componentDidMount() {
     const { updateCameraPermission } = this.props;
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
@@ -47,7 +50,7 @@ export default class ARDisplay extends React.Component {
     } else if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     } else {
-      console.log("Current dish", this.props.currentDish);
+
       return (
         <TouchableView
           style={{ flex: 1 }}
@@ -72,14 +75,14 @@ export default class ARDisplay extends React.Component {
   async turkeyObj() {
     const { updateTurkeyObj, currentDish } = this.props;
 
-    return fetch(`${currentDish}/model.obj`)
+    return fetch(`${currentDish.obj}`)
       .then(data => data.text())
       .then(obj => updateTurkeyObj(obj));
   }
 
   async turkeyMtl() {
     const { updateTurkeyMtl, currentDish } = this.props;
-    return fetch(`${currentDish}/materials.mtl`)
+    return fetch(`${currentDish.mtl}`)
       .then(data => data.text())
       .then(mtl => updateTurkeyMtl(mtl));
   }
@@ -90,7 +93,7 @@ export default class ARDisplay extends React.Component {
   }
 
   onContextCreate = async props => {
-    
+
     const { gl, scale, width, height, arSession } = props;
     // AR.PlaneDetectionTypes.Horizontal
     // Initialize renderer…
@@ -148,7 +151,7 @@ export default class ARDisplay extends React.Component {
       },
       AR.HitTestResultTypes.HorizontalPlane
     );
-        
+
         for (let hit of hitTest) {
           const { worldTransform } = hit;
           if (this.model) {

@@ -85,13 +85,13 @@ export default class SingleItemMenu extends React.Component {
     return (
       <TouchableHighlight
         onPress={event => {
-          this.props.updateDish(this.props.dish.url);
+          this.props.updateDish(this.props.dish.obj,this.props.dish.mtl);
           this.props.setModalVisible();
         }}
         style={styles.container}
       >
         <Container>
-          <Title>{this.props.dish.name}</Title>
+          <Title>{this.props.dish.dish_name}</Title>
           <ImageContainer>
             <Img source={{ uri: this.props.dish.image }} />
           </ImageContainer>
