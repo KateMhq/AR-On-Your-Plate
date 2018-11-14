@@ -7,25 +7,25 @@ import {
   filterStarter,
   filterMain,
   filterDessert,
-  updateInitialDishesState
+  updateInitialDishesState,
 } from "../actions";
 
 function mapStateToProps(state) {
   console.log(state.wrapper);
-  console.log(state.item.dishes)
+  console.log(state.item.dishes);
   return {
     modalVisible: state.wrapper.modalVisible,
     course: state.wrapper.course,
     starter: state.wrapper.starter,
     main: state.wrapper.main,
     dessert: state.wrapper.dessert,
-    dishes: state.item.dishes
+    dishes: state.item.dishes,
+    basketQuantity: state.item.basketQuantity,
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-  
     hideModal: () => dispatch(hideModal()),
     receiveCourse: () => dispatch(receiveCourse(course)),
     filterStarter: () => dispatch(filterStarter()),
