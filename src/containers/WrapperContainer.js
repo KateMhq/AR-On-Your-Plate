@@ -7,7 +7,7 @@ import {
   filterStarter,
   filterMain,
   filterDessert,
-  updateInitialDishesState
+  updateInitialDishesState,
 } from "../actions";
 
 function mapStateToProps(state) {
@@ -18,7 +18,8 @@ function mapStateToProps(state) {
     starter: state.wrapper.starter,
     main: state.wrapper.main,
     dessert: state.wrapper.dessert,
-    dishes: state.item.dishes
+    dishes: state.item.dishes,
+    basketQuantity: state.item.basketQuantity,
   };
 }
 
