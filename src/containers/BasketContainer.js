@@ -1,6 +1,6 @@
 import Basket from "../components/Basket";
 import { connect } from "react-redux";
-
+import { emptyBasket, postOrder } from "../actions";
 function mapStateToProps(state) {
   return {
     dishes: state.item.dishes,
@@ -9,7 +9,10 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    emptyBasket: () => dispatch(emptyBasket()),
+    postOrder: currentOrder => dispatch(postOrder(currentOrder))
+  };
 };
 
 export default connect(

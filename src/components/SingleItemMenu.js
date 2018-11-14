@@ -33,6 +33,7 @@ export default class SingleItemMenu extends React.Component {
     font-size: 19px;
     font-weight: 200;
   `;
+   let dishPrice = Number(this.props.dish.price);
     return (
       // <Container>
       //   <Title style={{ backgroundColor: this.props.color }}>
@@ -94,6 +95,7 @@ export default class SingleItemMenu extends React.Component {
       //     }}
       //   />
       // </Container>
+         
 
       <Container>
       <Header />
@@ -103,7 +105,15 @@ export default class SingleItemMenu extends React.Component {
             <Left>
               <Thumbnail source={{uri: this.props.dish.image }} />
               <Body>
-                <Text>X4{this.props.dish.dish_name}</Text>
+              
+        <Text>
+        {Object.values(this.props.currentOrder).map(dish => {
+        if (this.props.dish.dish_name === dish.name) {
+          return <Text key={dish.name}>X{dish.quantity}</Text>;
+        }
+      })} 
+        {this.props.dish.dish_name}
+        </Text>
                 <Text note>£{this.props.dish.price}</Text>
               </Body>
             </Left>
@@ -116,6 +126,7 @@ export default class SingleItemMenu extends React.Component {
               </Text>
             </Body>
           </CardItem>
+          
           <CardItem>
             <Left>
             {this.props.dish.quantity < 1 ? null :
@@ -140,6 +151,7 @@ export default class SingleItemMenu extends React.Component {
               <BtnText>+</BtnText>
             </AddBtn>
             </Left>
+            
             <Right>
               <Button iconLeft light onPress={() => {
                 return this.props.addToBasket(
@@ -150,7 +162,7 @@ export default class SingleItemMenu extends React.Component {
                         );
             }}>
                 <Icon type='FontAwesome' name='cart-plus'/>  
-                <Text>Add</Text>
+                <Text>{"Add for £" + this.props.dish.quantity * dishPrice}</Text>
                 </Button>
               </Right>
           </CardItem>

@@ -7,6 +7,7 @@ const initialState = {
       "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut/materials.mtl",
   },
   currentOrder: {},
+  basketQuantity: 0,
 };
 
 function item(state = initialState, action) {
@@ -39,7 +40,7 @@ function item(state = initialState, action) {
         }),
       });
       const newState = Object.assign({}, state, newObj);
-      console.log(newState);
+
       return newState;
 
     case "DECREASE_QUANTITY":
@@ -58,7 +59,7 @@ function item(state = initialState, action) {
       const updatedBasket = Object.assign({
         currentOrder: Object.assign({}, state.currentOrder, {
           [action.id]: Object.assign({}, state.currentOrder[action.id], {
-            id: action.id,
+            dish_id: action.id,
             quantity: state.currentOrder[action.id]
               ? state.currentOrder[action.id].quantity + action.quantity
               : action.quantity,
@@ -66,10 +67,19 @@ function item(state = initialState, action) {
             price: action.price,
           }),
         }),
+        dishes: Object.assign({}, state.dishes, {
+          [action.id]: Object.assign({}, state.dishes[action.id], {
+            quantity: 0,
+          }),
+        }),
+        basketQuantity: state.basketQuantity + action.quantity,
       });
       const updatedBasketState = Object.assign({}, state, updatedBasket);
+
       return updatedBasketState;
-      
+    case "EMPTY_BASKET":
+      return Object.assign({}, state, { currentOrder: {}, basketQuantity: 0 });
+
     default:
       return state;
   }

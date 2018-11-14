@@ -76,6 +76,14 @@ class Wrapper extends React.Component {
           flex: 1,
         }}
       >
+        <Button
+          raised
+          icon={{ name: "shopping-cart" }}
+          title={this.props.basketQuantity}
+          onPress={() => {
+            Actions.basket();
+          }}
+        />
 
         <View style={{ flexDirection: "row" }}>
           <CheckBox
@@ -120,7 +128,9 @@ class Wrapper extends React.Component {
             </Button>
             <Button badge vertical  active={this.state.tab2} onPress={() => {this.toggleTab2(), Actions.basket()}}>
             <Badge>
-              <Text>1</Text>
+              <Text>
+                {this.props.basketQuantity}
+              </Text>
             </Badge>
               <Icon active={this.state.tab2} />
               <Icon type='FontAwesome' name='shopping-cart'/>

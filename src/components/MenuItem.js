@@ -8,7 +8,7 @@ export default class MenuItem extends React.Component {
   }
 
   render() {
-    console.log("dishes", this.props.dishes);
+  
     return (
       <View
         style={{
@@ -35,6 +35,7 @@ export default class MenuItem extends React.Component {
                   color="#7DCE82"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             }
@@ -53,6 +54,7 @@ export default class MenuItem extends React.Component {
                   color="#FF8360"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             }
@@ -71,6 +73,7 @@ export default class MenuItem extends React.Component {
                   color="#E8E288"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             }
@@ -84,26 +87,29 @@ export default class MenuItem extends React.Component {
                   updateDish={this.props.updateDish}
                   addQuantity={this.props.addQuantity}
                   decreaseQuantity={this.props.decreaseQuantity}
-                  key={dish.name}
+                  key={dish.dish_name}
                   dish={dish}
                   color="#7DCE82"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             } else if (dish.category == "main") {
               return (
                 <SingleItemMenu
+                currentOrder={this.props.currentOrder}
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
                   addQuantity={this.props.addQuantity}
                   decreaseQuantity={this.props.decreaseQuantity}
-                  key={dish.name}
+                  key={dish.dish_name}
                   dish={dish}
                   color="#FF8360"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             } else if (dish.category == "dessert") {
@@ -115,11 +121,12 @@ export default class MenuItem extends React.Component {
                   updateDish={this.props.updateDish}
                   addQuantity={this.props.addQuantity}
                   decreaseQuantity={this.props.decreaseQuantity}
-                  key={dish.name}
+                  key={dish.dish_name}
                   dish={dish}
                   color="#E8E288"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             }

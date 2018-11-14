@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { Button, Icon } from "react-native-elements";
-
+import { Actions } from "react-native-router-flux";
 export default class Basket extends React.Component {
   render() {
     let orderTotal = 0;
@@ -24,7 +24,7 @@ export default class Basket extends React.Component {
             if (orderTotal > discount) {
               orderTotal = (orderTotal / 10) * 9;
               return (
-                <Text>
+                <Text key={dish.name}>
                   {dish.name} x {dish.quantity} = £{dishFullPrice.toFixed(2)}
                 </Text>
               );
@@ -49,17 +49,27 @@ export default class Basket extends React.Component {
         <Title style={{ fontSize: 30 }}>
           Order total: £{orderTotal.toFixed(2)}
         </Title>
+        <Button
+          raised
+          icon={{ name: "add-shopping-cart" }}
+          title="Empty Basket"
+          onPress={() => {
+            return this.props.emptyBasket();
+          }}
+          buttonStyle={{
+            backgroundColor: "red",
+          }}
+        />
 
         <Button
           raised
           icon={{ name: "add-shopping-cart" }}
           title="Complete Order"
           onPress={() => {
-            return this.props.addToBasket(
-              this.props.dish.id,
-              this.props.dish.quantity,
-              this.props.dish.dish_name,
-              this.props.dish.price
+            return (
+              this.props.postOrder(this.props.currentOrder),
+              this.props.emptyBasket(),
+              Actions.main()
             );
           }}
         />
