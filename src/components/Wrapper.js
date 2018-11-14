@@ -11,9 +11,62 @@ import {
 } from "react-native";
 import MenuItemContainer from "../containers/MenuItemContainer";
 import { Actions } from "react-native-router-flux";
-import { Button, Icon, CheckBox } from "react-native-elements";
+import { CheckBox } from "react-native-elements";
+import {
+  Container,
+  Header,
+  Title,
+  Content,
+  Button,
+  Footer,
+  FooterTab,
+  Body,
+  Left,
+  Right,
+  Icon,
+  Badge
+} from "native-base";
+import { filterStarter } from "../actions";
 
 class Wrapper extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tab1: false,
+      tab2: false,
+      checkbox1: true,
+      checkbox2: true,
+      checkbox3: true,
+      checkbox4: false
+    };
+  }
+  toggleTab1() {
+    this.setState({
+      tab1: true,
+      tab2: false
+    });
+  }
+  toggleTab2() {
+    this.setState({
+      tab1: false,
+      tab2: true
+    });
+  }
+  toggleSwitch1() {
+    this.setState({
+      checkbox1: !this.state.checkbox1
+    });
+  }
+  toggleSwitch2() {
+    this.setState({
+      checkbox2: !this.state.checkbox2
+    });
+  }
+  toggleSwitch3() {
+    this.setState({
+      checkbox3: !this.state.checkbox3
+    });
+  }
   render() {
     return (
       <View
@@ -23,14 +76,6 @@ class Wrapper extends React.Component {
           flex: 1,
         }}
       >
-        <Button
-          raised
-          icon={{ name: "shopping-cart" }}
-          title="(1)"
-          onPress={() => {
-            Actions.basket();
-          }}
-        />
 
         <View style={{ flexDirection: "row" }}>
           <CheckBox
@@ -57,10 +102,32 @@ class Wrapper extends React.Component {
             checked={this.props.dessert}
             onPress={() => this.props.filterDessert()}
           />
+      
         </View>
         <ScrollView style={{ width: "98%", marginLeft: 3.5 }}>
           <MenuItemContainer />
         </ScrollView>
+        <Content/>
+
+        <Footer>
+          <FooterTab>
+            <Button vertical active={this.state.tab1} onPress={() => {
+              this.toggleTab1()
+            }}>
+              <Icon active={this.state.tab1}/>
+              <Icon type='FontAwesome' name='home'/>
+              <Text>Home</Text>
+            </Button>
+            <Button badge vertical  active={this.state.tab2} onPress={() => {this.toggleTab2(), Actions.basket()}}>
+            <Badge>
+              <Text>1</Text>
+            </Badge>
+              <Icon active={this.state.tab2} />
+              <Icon type='FontAwesome' name='shopping-cart'/>
+              <Text>Basket</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
 
         <Modal
           animationType="slide"
