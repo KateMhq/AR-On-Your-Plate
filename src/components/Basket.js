@@ -24,7 +24,7 @@ export default class Basket extends React.Component {
             if (orderTotal > discount) {
               orderTotal = (orderTotal / 10) * 9;
               return (
-                <Text>
+                <Text key={dish.name}>
                   {dish.name} x {dish.quantity} = £{dishFullPrice.toFixed(2)}
                 </Text>
               );
@@ -66,10 +66,8 @@ export default class Basket extends React.Component {
           icon={{ name: "add-shopping-cart" }}
           title="Complete Order"
           onPress={() => {
-            return alert("Order Placed!");
-          }}
-          buttonStyle={{
-            backgroundColor: "green",
+            return this.props.postOrder(this.props.currentOrder)
+
           }}
         />
       </View>

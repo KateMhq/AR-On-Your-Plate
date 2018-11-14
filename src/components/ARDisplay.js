@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 export default class ARDisplay extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+
   }
 
 
@@ -139,7 +139,7 @@ export default class ARDisplay extends React.Component {
     }
 
     const size = this.renderer.getSize();
-    console.log("touch", { x, y, ...size });
+    
 
     const { hitTest } = await AR.performHitTest(
       {
