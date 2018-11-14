@@ -11,8 +11,7 @@ import {
 } from "../actions";
 
 function mapStateToProps(state) {
-  console.log(state.wrapper);
-  console.log(state.item.dishes)
+
   return {
     modalVisible: state.wrapper.modalVisible,
     course: state.wrapper.course,
@@ -25,7 +24,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
-  
+
     hideModal: () => dispatch(hideModal()),
     receiveCourse: () => dispatch(receiveCourse(course)),
     filterStarter: () => dispatch(filterStarter()),

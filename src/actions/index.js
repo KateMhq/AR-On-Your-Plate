@@ -98,27 +98,26 @@ export function addToBasket(id, quantity, name, price) {
   return { type: "ADD_TO_BASKET", name, quantity, id, price };
 }
 
-// export const addToBasket = (id, quantity) => (
-//   {
-//     type: 'ADD_TO_BASKET',
-//     id,
-//     quantity
-//   }
-//  );
+export function placeOrder(order){
+  return {
+    type:'PLACE_ORDER',
+    order
+  }
+}
+export function postOrder(currentOrder){
+  return function(dispatch, getState){
+    fetch(`https://project-ar-on-your-plate.herokuapp.com/orders`,{
+      method:"POST",
+      headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+      body: JSON.stringify(currentOrder)
+    })
+    .then(response => response.json())
+    .then(obj => {
+      dispatch(placeOrder(obj))
+    })
+    .catch(error =>  error.message)
 
-//  // removeFromCart
-//  export const removeFromBasket = (id) => (
-//   {
-//     type: 'REMOVE_FROM_BASKET',
-//     id,
-//   }
-//  );
-
-//  // updateCartItem
-//  export const updateBasketItemQuantity = (id, quantity) => (
-//   {
-//     type: 'UPDATE_BASKET_ITEM',
-//     id,
-//     quantity
-//   }
-//  );
+    }
+  }

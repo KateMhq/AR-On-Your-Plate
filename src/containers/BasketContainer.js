@@ -1,5 +1,6 @@
 import Basket from "../components/Basket";
 import { connect } from "react-redux";
+import {postOrder} from '../actions';
 
 function mapStateToProps(state) {
   return {
@@ -9,7 +10,9 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    postOrder: currentOrder => dispatch(postOrder(currentOrder))
+  };
 };
 
 export default connect(
