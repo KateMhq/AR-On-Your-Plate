@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { Button, Icon } from "react-native-elements";
-
+import { Actions } from "react-native-router-flux";
 export default class Basket extends React.Component {
   render() {
     let orderTotal = 0;
@@ -68,7 +68,8 @@ export default class Basket extends React.Component {
           onPress={() => {
             return (
               this.props.postOrder(this.props.currentOrder),
-              this.props.emptyBasket()
+              this.props.emptyBasket(),
+              Actions.main()
             );
           }}
         />
