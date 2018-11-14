@@ -9,7 +9,6 @@ const initialState = {
 
   currentOrder: {},
   basketQuantity: 0,
-
 };
 
 function item(state = initialState, action) {
@@ -80,7 +79,7 @@ function item(state = initialState, action) {
 
       return updatedBasketState;
     case "EMPTY_BASKET":
-      return Object.assign({}, state, { currentOrder: {} });
+      return Object.assign({}, state, { currentOrder: {}, basketQuantity: 0 });
 
     default:
       return state;
