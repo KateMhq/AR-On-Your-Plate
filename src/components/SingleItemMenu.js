@@ -98,6 +98,7 @@ const Quantity = styled(Text)`
 
 export default class SingleItemMenu extends React.Component {
   render() {
+    let dishPrice = Number(this.props.dish.price);
     return (
       <Container>
         <Title style={{ backgroundColor: this.props.color }}>
@@ -148,7 +149,7 @@ export default class SingleItemMenu extends React.Component {
         <Button
           raised
           icon={{ name: "add-shopping-cart" }}
-          title="Add to basket"
+          title={"Add £" + this.props.dish.quantity * dishPrice}
           onPress={() => {
             return this.props.addToBasket(
               this.props.dish.id,
