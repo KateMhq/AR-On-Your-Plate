@@ -53,6 +53,14 @@ function item(state = initialState, action) {
       });
       const decNewState = Object.assign({}, state, decNewObj);
       return decNewState;
+    case "QUANTITY_ZERO":
+      return Object.assign({
+        dishes: Object.assign({}, state.dishes, {
+          [action.dish]: Object.assign({}, state.dishes[action.dish], {
+            quantity: 0,
+          }),
+        }),
+      });
 
     case "ADD_TO_BASKET":
       const updatedBasket = Object.assign({
