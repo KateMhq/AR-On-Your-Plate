@@ -98,6 +98,7 @@ export default class MenuItem extends React.Component {
             } else if (dish.category == "main") {
               return (
                 <SingleItemMenu
+                currentOrder={this.props.currentOrder}
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
