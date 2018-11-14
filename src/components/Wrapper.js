@@ -14,7 +14,6 @@ import { Actions } from "react-native-router-flux";
 import { Button, Icon, CheckBox } from "react-native-elements";
 
 class Wrapper extends React.Component {
-
   render() {
     return (
       <View
@@ -24,16 +23,14 @@ class Wrapper extends React.Component {
           flex: 1,
         }}
       >
-
-          <Button
-            raised
-            icon={{name: 'shopping-cart'}}
-            title='(1)'
-            onPress={() => {
-              Actions.basket();
-            }}
-            />
-        <Text style={{ fontSize: 30 }}>Filter By: </Text>
+        <Button
+          raised
+          icon={{ name: "shopping-cart" }}
+          title="(1)"
+          onPress={() => {
+            Actions.basket();
+          }}
+        />
 
         <View style={{ flexDirection: "row" }}>
           <CheckBox
@@ -90,23 +87,6 @@ class Wrapper extends React.Component {
           </TouchableHighlight>
           <ARContainer />
         </Modal>
-        <TouchableHighlight
-          onPress={() => {
-            Actions.basket();
-          }}
-          style={{
-            height: 30,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 20,
-              color: "black",
-            }}
-          >
-            View basket
-          </Text>
-        </TouchableHighlight>
       </View>
     );
   }

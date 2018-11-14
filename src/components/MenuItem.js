@@ -3,12 +3,12 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import SingleItemMenu from "./SingleItemMenu";
 
 export default class MenuItem extends React.Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.updateInitialDishesState();
   }
 
   render() {
-    console.log('dishes', this.props.dishes)
+    console.log("dishes", this.props.dishes);
     return (
       <View
         style={{

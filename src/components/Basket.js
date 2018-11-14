@@ -1,9 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import styled from "styled-components/native";
+import { Button, Icon } from "react-native-elements";
 
 export default class Basket extends React.Component {
   render() {
+    let orderTotal = 0;
+    const discount = 30;
+    const deliveryCharge = 2;
     const Title = styled(Text)`
       font-size: 30px;
       text-align: center;
@@ -14,14 +18,51 @@ export default class Basket extends React.Component {
         <Title style={{ fontSize: 30 }}>Your Order</Title>
         <ScrollView>
           {Object.values(this.props.currentOrder).map(dish => {
-            return (
-              <Text>
-                {dish.name} x {dish.quantity}
-              </Text>
-            );
+            let dishPrice = Number(dish.price);
+            let dishFullPrice = dish.quantity * dishPrice;
+            orderTotal += dishFullPrice;
+            if (orderTotal > discount) {
+              orderTotal = (orderTotal / 10) * 9;
+              return (
+                <Text>
+                  {dish.name} x {dish.quantity} = £{dishFullPrice.toFixed(2)}
+                </Text>
+              );
+            } else {
+              orderTotal = orderTotal + deliveryCharge;
+              let spendMore = discount - orderTotal;
+              return (
+                <View>
+                  <Text>
+                    {dish.name} x {dish.quantity} = £{dishFullPrice.toFixed(2)}
+                  </Text>
+                  <Text>
+                    Spend £{spendMore.toFixed(2)} more to get 10% off and free
+                    delivery!
+                  </Text>
+                </View>
+              );
+            }
           })}
         </ScrollView>
-        <Title style={{ fontSize: 30 }}>Delivery charge: £5.00</Title>
+
+        <Title style={{ fontSize: 30 }}>
+          Order total: £{orderTotal.toFixed(2)}
+        </Title>
+
+        <Button
+          raised
+          icon={{ name: "add-shopping-cart" }}
+          title="Complete Order"
+          onPress={() => {
+            return this.props.addToBasket(
+              this.props.dish.id,
+              this.props.dish.quantity,
+              this.props.dish.dish_name,
+              this.props.dish.price
+            );
+          }}
+        />
       </View>
     );
   }
