@@ -39,10 +39,10 @@ function Landing() {
   return (
     <MainView>
       <TextHeader>
-        <Text>About Us</Text>
+        <Text>AR On Your Plate</Text>
       </TextHeader>
       <TextDescription>
-        <Text />
+        <Text></Text>
       </TextDescription>
       <TouchableHighlight
         onPress={() => {
