@@ -102,6 +102,10 @@ export function quantityZero(dish) {
   return { type: "QUANTITY_ZERO", dish };
 }
 
+export function emptyBasket() {
+  return { type: "EMPTY_BASKET" };
+}
+
 // export const addToBasket = (id, quantity) => (
 //   {
 //     type: 'ADD_TO_BASKET',

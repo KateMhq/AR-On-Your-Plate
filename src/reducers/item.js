@@ -77,6 +77,8 @@ function item(state = initialState, action) {
       });
       const updatedBasketState = Object.assign({}, state, updatedBasket);
       return updatedBasketState;
+    case "EMPTY_BASKET":
+      return Object.assign({}, state, { currentOrder: {} });
     default:
       return state;
   }
