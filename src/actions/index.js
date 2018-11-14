@@ -121,3 +121,10 @@ export function postOrder(currentOrder){
 
     }
   }
+  export function quantityZero(dish) {
+    return { type: "QUANTITY_ZERO", dish };
+  }
+
+  export function emptyBasket() {
+    return { type: "EMPTY_BASKET" };
+  }

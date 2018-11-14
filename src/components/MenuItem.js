@@ -35,6 +35,7 @@ export default class MenuItem extends React.Component {
                   color="#7DCE82"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             }
@@ -53,6 +54,7 @@ export default class MenuItem extends React.Component {
                   color="#FF8360"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             }
@@ -71,6 +73,7 @@ export default class MenuItem extends React.Component {
                   color="#E8E288"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             }
@@ -89,6 +92,7 @@ export default class MenuItem extends React.Component {
                   color="#7DCE82"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             } else if (dish.category == "main") {
@@ -104,6 +108,7 @@ export default class MenuItem extends React.Component {
                   color="#FF8360"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             } else if (dish.category == "dessert") {
@@ -120,6 +125,7 @@ export default class MenuItem extends React.Component {
                   color="#E8E288"
                   addToBasket={this.props.addToBasket}
                   addToQuantity={this.props.addtoQuantity}
+                  quantityZero={this.props.quantityZero}
                 />
               );
             }

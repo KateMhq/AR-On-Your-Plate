@@ -66,10 +66,18 @@ function item(state = initialState, action) {
             price: action.price,
           }),
         }),
+        dishes: Object.assign({}, state.dishes, {
+          [action.id]: Object.assign({}, state.dishes[action.id], {
+            quantity: 0,
+          }),
+        }),
       });
       const updatedBasketState = Object.assign({}, state, updatedBasket);
       console.log("current order", state.currentOrder)
       return updatedBasketState;
+    case "EMPTY_BASKET":
+      return Object.assign({}, state, { currentOrder: {} });
+
     default:
       return state;
   }

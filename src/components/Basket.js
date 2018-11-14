@@ -49,6 +49,17 @@ export default class Basket extends React.Component {
         <Title style={{ fontSize: 30 }}>
           Order total: £{orderTotal.toFixed(2)}
         </Title>
+        <Button
+          raised
+          icon={{ name: "add-shopping-cart" }}
+          title="Empty Basket"
+          onPress={() => {
+            return this.props.emptyBasket();
+          }}
+          buttonStyle={{
+            backgroundColor: "red",
+          }}
+        />
 
         <Button
           raised
