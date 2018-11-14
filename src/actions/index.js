@@ -94,8 +94,8 @@ export function decreaseQuantity(quantity, dish) {
   };
 }
 
-export function addToBasket(id, quantity, name, price, func) {
-  return { type: "ADD_TO_BASKET", name, quantity, id, price, func };
+export function addToBasket(id, quantity, name, price) {
+  return { type: "ADD_TO_BASKET", name, quantity, id, price };
 }
 
 export function quantityZero(dish) {

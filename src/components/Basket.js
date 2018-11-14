@@ -66,12 +66,7 @@ export default class Basket extends React.Component {
           icon={{ name: "add-shopping-cart" }}
           title="Complete Order"
           onPress={() => {
-            return this.props.addToBasket(
-              this.props.dish.id,
-              this.props.dish.quantity,
-              this.props.dish.dish_name,
-              this.props.dish.price
-            );
+            return alert("Order Placed!");
           }}
           buttonStyle={{
             backgroundColor: "green",
