@@ -6,7 +6,6 @@ const initialState = {
     mtl:
       "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut/materials.mtl",
   },
-
   currentOrder: {},
   basketQuantity: 0,
 };

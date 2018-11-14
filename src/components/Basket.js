@@ -66,8 +66,10 @@ export default class Basket extends React.Component {
           icon={{ name: "add-shopping-cart" }}
           title="Complete Order"
           onPress={() => {
-            return this.props.postOrder(this.props.currentOrder)
-
+            return (
+              this.props.postOrder(this.props.currentOrder),
+              this.props.emptyBasket()
+            );
           }}
         />
       </View>
