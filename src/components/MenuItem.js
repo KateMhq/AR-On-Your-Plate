@@ -84,7 +84,7 @@ export default class MenuItem extends React.Component {
                   updateDish={this.props.updateDish}
                   addQuantity={this.props.addQuantity}
                   decreaseQuantity={this.props.decreaseQuantity}
-                  key={dish.name}
+                  key={dish.dish_name}
                   dish={dish}
                   color="#7DCE82"
                   addToBasket={this.props.addToBasket}
@@ -99,7 +99,7 @@ export default class MenuItem extends React.Component {
                   updateDish={this.props.updateDish}
                   addQuantity={this.props.addQuantity}
                   decreaseQuantity={this.props.decreaseQuantity}
-                  key={dish.name}
+                  key={dish.dish_name}
                   dish={dish}
                   color="#FF8360"
                   addToBasket={this.props.addToBasket}
@@ -115,7 +115,7 @@ export default class MenuItem extends React.Component {
                   updateDish={this.props.updateDish}
                   addQuantity={this.props.addQuantity}
                   decreaseQuantity={this.props.decreaseQuantity}
-                  key={dish.name}
+                  key={dish.dish_name}
                   dish={dish}
                   color="#E8E288"
                   addToBasket={this.props.addToBasket}
