@@ -56,6 +56,9 @@ export default class Basket extends React.Component {
           onPress={() => {
             return this.props.emptyBasket();
           }}
+          buttonStyle={{
+            backgroundColor: "red",
+          }}
         />
 
         <Button
@@ -69,6 +72,9 @@ export default class Basket extends React.Component {
               this.props.dish.dish_name,
               this.props.dish.price
             );
+          }}
+          buttonStyle={{
+            backgroundColor: "green",
           }}
         />
       </View>
