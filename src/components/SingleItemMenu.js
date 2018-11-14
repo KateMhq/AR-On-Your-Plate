@@ -153,7 +153,8 @@ export default class SingleItemMenu extends React.Component {
             return this.props.addToBasket(
               this.props.dish.id,
               this.props.dish.quantity,
-              this.props.dish.dish_name
+              this.props.dish.dish_name,
+              this.props.dish.price
             );
           }}
         />

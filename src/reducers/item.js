@@ -63,16 +63,12 @@ function item(state = initialState, action) {
               ? state.currentOrder[action.id].quantity + action.quantity
               : action.quantity,
             name: action.name,
+            price: action.price,
           }),
         }),
       });
       const updatedBasketState = Object.assign({}, state, updatedBasket);
       return updatedBasketState;
-    // case "ADD_TO_QUANTITY":
-    // const currentQuantity =
-    //   return Object.assign({}, state, {
-    //     currentOrder: state.currentOrder.map
-    //   });
     default:
       return state;
   }
