@@ -29,6 +29,7 @@ import Router from "./Router";
 
 export default class App extends React.Component {
   render() {
+    console.disableYellowBox = true;
     return (
       <Provider
         store={createStore(rootReducer, applyMiddleware(thunkMiddleware))}

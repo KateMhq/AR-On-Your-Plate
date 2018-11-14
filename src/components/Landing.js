@@ -7,52 +7,73 @@ import {
   TouchableHighlight,
   Image,
   ScrollView,
+  ImageBackground,
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import styled from "styled-components/native";
+import { Button, Icon} from "react-native-elements";
+
 function Landing() {
-  const burgerPic = {
-    uri:
-      "https://www.seriouseats.com/recipes/images/2015/07/20150728-homemade-whopper-food-lab-35-1500x1125.jpg",
-  };
-  const MainView = styled(View)`
+
+  const BackgroundView = styled(View)`
     height: 100%;
     margin: 0 5px 5px 5px;
-    background-color: #f6f2ed;
     flex-direction: column;
     border-radius: 15px;
     align-items: center;
-    justify-content: space-evenly;
+    color: white;
+    justify-content: space-around;
   `;
-  const TextHeader = styled(View)`
-    color: #464646;
-    font-weight: 600;
-    font-size: 30px;
+  const TextHeader = styled(Text)`
+    color: white;
+    font-weight: 500;
+    font-size: 40px;
+    padding:0;
+    margin: 0
   `;
 
-  const TextDescription = styled(View)`
-    font-size: 20px;
-    color: #464646;
-    font-weight: 600;
+  const TextDescription = styled(Text)`
+    font-size: 33px;
+    color: white;
+    font-weight: 400;
+    text-align: center;
+
   `;
+
+
 
   return (
-    <MainView>
-      <TextHeader>
-        <Text>AR On Your Plate</Text>
+
+      <ImageBackground source={require("../../assets/lobster.jpg")} style={{width: '100%', height: '100%'}}>
+      <BackgroundView>
+      <TextHeader >
+        AR On Your Plate
       </TextHeader>
       <TextDescription>
-        <Text></Text>
+        Start your 3D order experience
       </TextDescription>
-      <TouchableHighlight
+
+      <Button
+        icon={{
+          name: 'home',
+          size: 25,
+          color: 'white'
+        }}
+        backgroundColor='#ED6A5A'
+        title='Enter'
+        fontSize = '23'
+        color = 'white'
+        fontWeight = '550'
+
         onPress={() => {
           Actions.main();
         }}
-      >
-        <Image source={burgerPic} style={{ height: 200, width: 200 }} />
-      </TouchableHighlight>
-      <TextDescription />
-    </MainView>
+      />
+
+
+        </BackgroundView>
+      </ImageBackground>
+
   );
 }
 export default Landing;
