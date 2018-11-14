@@ -26,7 +26,7 @@ class Wrapper extends React.Component {
         <Button
           raised
           icon={{ name: "shopping-cart" }}
-          title="(1)"
+          title={this.props.basketQuantity}
           onPress={() => {
             Actions.basket();
           }}

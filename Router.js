@@ -17,8 +17,8 @@ const RouterComponent = () => {
             key="basket"
             component={BasketContainer}
             title="Your Basket"
-            rightTitle="Empty Basket"
-            onRight={() => {}}
+            /* rightTitle="Empty Basket"
+            onRight={() => {}} */
           />
         </Scene>
       </Scene>

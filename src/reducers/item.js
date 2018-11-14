@@ -6,7 +6,10 @@ const initialState = {
     mtl:
       "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut/materials.mtl",
   },
-  currentOrder: {}
+
+  currentOrder: {},
+  basketQuantity: 0,
+
 };
 
 function item(state = initialState, action) {
@@ -71,9 +74,10 @@ function item(state = initialState, action) {
             quantity: 0,
           }),
         }),
+        basketQuantity: state.basketQuantity + action.quantity,
       });
       const updatedBasketState = Object.assign({}, state, updatedBasket);
-      console.log("current order", state.currentOrder)
+
       return updatedBasketState;
     case "EMPTY_BASKET":
       return Object.assign({}, state, { currentOrder: {} });
