@@ -97,10 +97,10 @@ export default class SingleItemMenu extends React.Component {
       // </Container>
          
 
-      <Container>
+      <Container style={{}}>
       <Header />
       <Content>
-        <Card style={{flex: 0}}>
+        <Card style={{}}>
           <CardItem>
             <Left>
               <Thumbnail source={{uri: this.props.dish.image }} />
@@ -119,12 +119,22 @@ export default class SingleItemMenu extends React.Component {
             </Left>
           </CardItem>
           <CardItem>
+         
             <Body>
+
+              <TouchableHighlight style={{height: 200}}
+                  onPress={event => {
+                    this.props.updateDish(this.props.dish.obj, this.props.dish.mtl);
+                    this.props.setModalVisible();
+                  }}
+                >
               <Image source={{uri: this.props.dish.image }} style={{height: 200, width: 300, flex: 1}}/>
+              </TouchableHighlight>
               <Text>
               {this.props.dish.description}
               </Text>
             </Body>
+           
           </CardItem>
           
           <CardItem>
@@ -176,7 +186,7 @@ export default class SingleItemMenu extends React.Component {
 
 
 
-
+     
 
 
 // const styles = StyleSheet.create({
