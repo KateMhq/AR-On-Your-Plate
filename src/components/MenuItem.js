@@ -8,7 +8,7 @@ export default class MenuItem extends React.Component {
   }
 
   render() {
-    console.log("dishes", this.props.dishes);
+  
     return (
       <View
         style={{
