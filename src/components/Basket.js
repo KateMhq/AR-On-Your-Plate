@@ -20,9 +20,8 @@ export default class Basket extends React.Component {
       <View style={{}}>
         <Title style={{ fontSize: 30 }}>Your Order</Title>
 
-        <ScrollView>
+        <ScrollView style={{ paddingLeft: 5 }}>
           {Object.values(this.props.currentOrder.order).map(dish => {
-
             let dishPrice = Number(dish.price);
             let dishFullPrice = dish.quantity * dishPrice;
             orderTotal += dishFullPrice;
@@ -79,7 +78,7 @@ export default class Basket extends React.Component {
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            <View style={{ flex: 0.85 }}>
+            <View style={{ flex: 0.85, paddingTop: 5 }}>
               <Text style={{ fontSize: 16 }}>Delivery fee:</Text>
               <Text style={{ fontSize: 12, fontFamily: "AvenirNext-Italic" }}>
                 (free delivery for orders over £30)
@@ -90,7 +89,12 @@ export default class Basket extends React.Component {
             </Text>
           </View>
           <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              paddingTop: 5,
+              paddingBottom: 5
+            }}
           >
             <View style={{ flex: 0.85, fontSize: 16 }}>
               <Text style={{ fontSize: 16 }}>Discount:</Text>
@@ -132,7 +136,6 @@ export default class Basket extends React.Component {
             }}
           />
 
-
           <Button
             style={{ width: "100%" }}
             raised
@@ -147,7 +150,6 @@ export default class Basket extends React.Component {
             }}
           />
         </View>
-
       </View>
     );
   }
