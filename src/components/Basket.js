@@ -143,6 +143,7 @@ export default class Basket extends React.Component {
             title="Complete Order"
             onPress={() => {
               return (
+                console.log(this.props.currentOrder),
                 this.props.postOrder(this.props.currentOrder),
                 this.props.emptyBasket(),
                 Actions.main()

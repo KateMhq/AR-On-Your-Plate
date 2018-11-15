@@ -87,7 +87,7 @@ function item(state = initialState, action) {
     case "ADD_USER":
       return Object.assign({}, state, {
         currentOrder: Object.assign({}, state.currentOrder, {
-          user: { user_name: action.name, user_number: action.number },
+          user: { user_name: action.name, phone: action.number },
         }),
       });
     default:
