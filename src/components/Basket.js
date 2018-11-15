@@ -17,7 +17,7 @@ export default class Basket extends React.Component {
       <View style={{}}>
         <Title style={{ fontSize: 30 }}>Your Order</Title>
         <ScrollView>
-          {Object.values(this.props.currentOrder).map(dish => {
+          {Object.values(this.props.currentOrder.order).map(dish => {
             let dishPrice = Number(dish.price);
             let dishFullPrice = dish.quantity * dishPrice;
             orderTotal += dishFullPrice;
@@ -67,6 +67,7 @@ export default class Basket extends React.Component {
           title="Complete Order"
           onPress={() => {
             return (
+              console.log(this.props.currentOrder),
               this.props.postOrder(this.props.currentOrder),
               this.props.emptyBasket(),
               Actions.main()
