@@ -5,7 +5,7 @@ import {
   View,
   Image,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 // import { Button } from "react-native-elements";
 import {
@@ -19,12 +19,14 @@ import {
   Icon,
   Left,
   Right,
-  Body
+  Body,
 } from "native-base";
 import styled from "styled-components/native";
 
 export default class SingleItemMenu extends React.Component {
   render() {
+    let dishPrice = Number(this.props.dish.price);
+    let fullQuantityPrice = this.props.dish.quantity * dishPrice;
     const AddBtn = styled(TouchableOpacity)`
       margin: 0 5px;
       border-radius: 20px;
@@ -44,7 +46,6 @@ export default class SingleItemMenu extends React.Component {
       font-weight: 200;
     `;
 
-    let dishPrice = Number(this.props.dish.price);
     return (
       <Container style={{ height: "100%" }}>
         {/* WHAT FOR WE NEED THIS COMPONENT? <Header /> */}
@@ -99,7 +100,7 @@ export default class SingleItemMenu extends React.Component {
               style={{
                 justifyContent: "space-between",
                 flexDirection: "row",
-                height: 60
+                height: 60,
               }}
             >
               <Left>
@@ -107,7 +108,7 @@ export default class SingleItemMenu extends React.Component {
                   <Button
                     style={{
                       alignItems: "center",
-                      paddingRight: 10
+                      paddingRight: 10,
                     }}
                     iconCenter
                     light
@@ -121,9 +122,7 @@ export default class SingleItemMenu extends React.Component {
                     }}
                   >
                     <Icon type="FontAwesome" name="cart-plus" />
-                    <Text>
-                      {"Add for £" + this.props.dish.quantity * dishPrice}
-                    </Text>
+                    <Text>{"Add for £" + fullQuantityPrice.toFixed(2)}</Text>
                   </Button>
                 )}
               </Left>
@@ -131,7 +130,7 @@ export default class SingleItemMenu extends React.Component {
               <Right
                 style={{
                   justifyContent: "flex-end",
-                  flexDirection: "row"
+                  flexDirection: "row",
                 }}
               >
                 {this.props.dish.quantity < 1 ? null : (

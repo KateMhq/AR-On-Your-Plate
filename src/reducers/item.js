@@ -6,7 +6,7 @@ const initialState = {
     mtl:
       "https://poly.googleapis.com/downloads/bWRnM-3pmS5/bbJIjF-59Ut/materials.mtl",
   },
-  currentOrder: {},
+  currentOrder: { order: {}, user: {} },
   basketQuantity: 0,
 };
 
@@ -58,13 +58,15 @@ function item(state = initialState, action) {
     case "ADD_TO_BASKET":
       const updatedBasket = Object.assign({
         currentOrder: Object.assign({}, state.currentOrder, {
-          [action.id]: Object.assign({}, state.currentOrder[action.id], {
-            dish_id: action.id,
-            quantity: state.currentOrder[action.id]
-              ? state.currentOrder[action.id].quantity + action.quantity
-              : action.quantity,
-            name: action.name,
-            price: action.price,
+          order: Object.assign({}, state.currentOrder.order, {
+            [action.id]: Object.assign({}, state.currentOrder[action.id], {
+              dish_id: action.id,
+              quantity: state.currentOrder[action.id]
+                ? state.currentOrder[action.id].quantity + action.quantity
+                : action.quantity,
+              name: action.name,
+              price: action.price,
+            }),
           }),
         }),
         dishes: Object.assign({}, state.dishes, {
@@ -78,8 +80,16 @@ function item(state = initialState, action) {
 
       return updatedBasketState;
     case "EMPTY_BASKET":
-      return Object.assign({}, state, { currentOrder: {}, basketQuantity: 0 });
-
+      return Object.assign({}, state, {
+        currentOrder: { order: {} },
+        basketQuantity: 0,
+      });
+    case "ADD_USER":
+      return Object.assign({}, state, {
+        currentOrder: Object.assign({}, state.currentOrder, {
+          user: { user_name: action.name, user_number: action.number },
+        }),
+      });
     default:
       return state;
   }

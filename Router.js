@@ -1,14 +1,14 @@
 import React from "react";
 import { Scene, Router } from "react-native-router-flux";
 import WrapperContainer from "./src/containers/WrapperContainer";
-import Landing from "./src/components/Landing";
+import LandingContainer from "./src/containers/LandingContainer";
 import BasketContainer from "./src/containers/BasketContainer";
 const RouterComponent = () => {
   return (
     <Router>
       <Scene key="root" hideNavBar>
         <Scene key="welcome" initial>
-          <Scene key="Landing" component={Landing} title="Welcome" />
+          <Scene key="Landing" component={LandingContainer} title="Welcome" />
         </Scene>
 
         <Scene key="main">
