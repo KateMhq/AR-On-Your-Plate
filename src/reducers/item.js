@@ -20,7 +20,7 @@ function item(state = initialState, action) {
         {},
         ...dishesArr.map(item => ({ [item.id]: item }))
       );
-
+    
       return Object.assign({}, state, { dishes: dishesObj });
 
     case "UPDATE_DISH":

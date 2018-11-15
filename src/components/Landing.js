@@ -12,20 +12,14 @@ import {
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import styled from "styled-components/native";
+
+  import { AppLoading, Asset, Font } from 'expo';
 import { Icon } from "native-base";
 import { Button } from "react-native-elements";
 
 function Landing(props) {
   const BackgroundView = View;
-  // const BackgroundView = styled(View)`
-  //   height: 100%;
-  //   margin: 0 5px 5px 5px;
-  //   flex-direction: column;
-  //   border-radius: 15px;
-  //   align-items: center;
-  //   color: white;
-  //   justify-content: space-around;
-  // `;
+
   const TextHeader = styled(Text)`
     color: white;
     font-weight: 500;
@@ -40,6 +34,7 @@ function Landing(props) {
     font-weight: 400;
     text-align: center;
   `;
+
 
   const inputStyle = StyleSheet.create({
     input: {
@@ -60,6 +55,7 @@ function Landing(props) {
       style={{ width: "100%", height: "100%" }}
     >
       <BackgroundView>
+
         <TextHeader>AR On Your Plate</TextHeader>
         <TextDescription>Start your 3D order experience</TextDescription>
 
@@ -85,6 +81,7 @@ function Landing(props) {
           />
         </TypeSection>
 
+
         <TypeSection style={inputStyle.input}>
           <Icon style={{ padding: 10 }} type="FontAwesome" name="phone" />
           <TextInput
@@ -105,6 +102,7 @@ function Landing(props) {
           />
         </TypeSection>
 
+
         <Button
           icon={{
             name: "home",
@@ -113,10 +111,12 @@ function Landing(props) {
           }}
           backgroundColor="#ED6A5A"
           title="Enter"
+
           fontSize={23}
           color="white"
           fontWeight="550"
           borderRadius={15}
+
           onPress={() => {
             props.addUser(props.userName, props.userNumber), Actions.main();
           }}
