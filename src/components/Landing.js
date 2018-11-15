@@ -25,12 +25,13 @@ function Landing() {
     align-items: center;
     color: white;
     justify-content: space-around;
+    
   `;
   const TextHeader = styled(Text)`
     color: white;
     font-weight: 500;
     font-size: 40px;
-    padding: 0;
+  
     margin: 0;
   `;
 
@@ -39,6 +40,7 @@ function Landing() {
     color: white;
     font-weight: 400;
     text-align: center;
+   
   `;
 
   const TypeSection = styled(View)`
@@ -61,7 +63,7 @@ function Landing() {
       <BackgroundView>
  
         <TextHeader>AR On Your Plate</TextHeader>
-        <TextDescription>Start your 3D order experience</TextDescription>
+       
 
      <TypeSection>
     <Icon style={{padding: 10}} type='FontAwesome' name='user'/>
@@ -90,7 +92,7 @@ function Landing() {
     />
 </TypeSection>
 
- 
+  <TextDescription>Start your 3D order experience</TextDescription>
 
         <Button
           icon={{
