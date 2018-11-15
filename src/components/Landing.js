@@ -12,11 +12,15 @@ import {
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import styled from "styled-components/native";
-import { Icon } from "native-base";
+
 import { Button} from "react-native-elements";
+import { AppLoading, Asset, Font } from 'expo';
+import { Icon } from "native-base";
+
+
 
 function Landing() {
-  
+
   const BackgroundView = styled(View)`
     height: 100%;
     margin: 0 5px 5px 5px;
@@ -48,18 +52,17 @@ function Landing() {
     align-items: center;
     border: 4px white solid;
     border-radius: 25px;
-    
+
   `;
   return (
     <ImageBackground
-      source={{
-        uri:
-          "https://content-eu.drive.amazonaws.com/v2/download/presigned/yxm32nKb4AbO4FJyYXnO2cXGPfYjKYWGulUZMCS3B-oeJxFPc?download=true"
-      }}
+      source={require('../../assets/lobster.jpg')}
+          // "https://content-eu.drive.amazonaws.com/v2/download/presigned/yxm32nKb4AbO4FJyYXnO2cXGPfYjKYWGulUZMCS3B-oeJxFPc?download=true"
+
       style={{ width: "100%", height: "100%" }}
     >
       <BackgroundView>
- 
+
         <TextHeader>AR On Your Plate</TextHeader>
         <TextDescription>Start your 3D order experience</TextDescription>
 
@@ -90,7 +93,7 @@ function Landing() {
     />
 </TypeSection>
 
- 
+
 
         <Button
           icon={{
@@ -100,10 +103,10 @@ function Landing() {
           }}
           backgroundColor="#ED6A5A"
           title="Enter"
-          fontSize="23"
+
           color="white"
           fontWeight="550"
-          borderRadius = '15'
+          borderRadius = "15"
           onPress={() => {
             Actions.main();
           }}
@@ -114,4 +117,3 @@ function Landing() {
 }
 
 export default Landing;
-

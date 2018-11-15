@@ -10,7 +10,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "https://content-eu.drive.amazonaws.com/v2/download/presigned/TeXLBdgIF9eVgnIpjt8Hn5IJ36lhyzgGYgE9c4ZgJfspX92IB?download=true",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#A118EA"
     },
