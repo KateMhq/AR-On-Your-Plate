@@ -33,6 +33,11 @@ export default class SingleItemMenu extends React.Component {
     font-size: 19px;
     font-weight: 200;
   `;
+  const title = styled(Text)`
+    margin: 5px;
+  `;
+
+  
    let dishPrice = Number(this.props.dish.price);
     return (
       // <Container>
@@ -97,10 +102,10 @@ export default class SingleItemMenu extends React.Component {
       // </Container>
          
 
-      <Container style={{}}>
+      <Container >
       <Header />
-      <Content>
-        <Card style={{}}>
+      <Content >
+        <Card >
           <CardItem>
             <Left>
               <Thumbnail source={{uri: this.props.dish.image }} />
@@ -109,7 +114,7 @@ export default class SingleItemMenu extends React.Component {
         <Text>
         {Object.values(this.props.currentOrder).map(dish => {
         if (this.props.dish.dish_name === dish.name) {
-          return <Text key={dish.name}>X{dish.quantity}</Text>;
+          return <Text s key={dish.name}>X{dish.quantity}</Text>;
         }
       })} 
         {this.props.dish.dish_name}
@@ -122,13 +127,13 @@ export default class SingleItemMenu extends React.Component {
          
             <Body>
 
-              <TouchableHighlight style={{height: 200}}
+              <TouchableHighlight style={{height: 200, width: "100%"}}
                   onPress={event => {
                     this.props.updateDish(this.props.dish.obj, this.props.dish.mtl);
                     this.props.setModalVisible();
                   }}
                 >
-              <Image source={{uri: this.props.dish.image }} style={{height: 200, width: 300, flex: 1}}/>
+              <Image source={{uri: this.props.dish.image }} style={{height: "100%", width: "100%"}}/>
               </TouchableHighlight>
               <Text>
               {this.props.dish.description}
@@ -163,6 +168,7 @@ export default class SingleItemMenu extends React.Component {
             </Left>
             
             <Right>
+            {this.props.dish.quantity < 1 ? null :
               <Button iconLeft light onPress={() => {
                 return this.props.addToBasket(
                           this.props.dish.id,
@@ -174,6 +180,7 @@ export default class SingleItemMenu extends React.Component {
                 <Icon type='FontAwesome' name='cart-plus'/>  
                 <Text>{"Add for £" + this.props.dish.quantity * dishPrice}</Text>
                 </Button>
+            }
               </Right>
           </CardItem>
           
