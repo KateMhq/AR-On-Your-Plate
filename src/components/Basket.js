@@ -100,7 +100,6 @@ export default class Basket extends React.Component {
               {discountProcent}%
             </Text>
           </View>
-          <View style={{ height: "100%" }} />
           <View>
             <View
               style={{
