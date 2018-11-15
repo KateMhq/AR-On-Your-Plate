@@ -8,15 +8,14 @@ export default class MenuItem extends React.Component {
   }
 
   render() {
-  
     return (
       <View
         style={{
           backgroundColor: "white",
-          flexDirection: "column",
-          justifyContent: "space-around",
-          height: "100%",
-          flex: 1,
+          flexDirection: "column"
+          // justifyContent: "space-around",
+          // height: "100%",
+          // flex: 1,
         }}
       >
         {Object.values(this.props.dishes).map(dish => {
@@ -98,7 +97,7 @@ export default class MenuItem extends React.Component {
             } else if (dish.category == "main") {
               return (
                 <SingleItemMenu
-                currentOrder={this.props.currentOrder}
+                  currentOrder={this.props.currentOrder}
                   currentDish={this.props.currentDish}
                   setModalVisible={this.props.setModalVisible}
                   updateDish={this.props.updateDish}
