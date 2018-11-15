@@ -24,7 +24,7 @@ function Landing(props) {
     color: white;
     font-weight: 500;
     font-size: 40px;
-    padding: 0;
+  
     margin: 0;
   `;
 
@@ -33,6 +33,7 @@ function Landing(props) {
     color: white;
     font-weight: 400;
     text-align: center;
+   
   `;
 
   const inputStyle = StyleSheet.create({
@@ -52,7 +53,7 @@ function Landing(props) {
     >
       <BackgroundView>
         <TextHeader>AR On Your Plate</TextHeader>
-        <TextDescription>Start your 3D order experience</TextDescription>
+       
 
         <TypeSection style={inputStyle.input}>
           <Icon style={{ padding: 10 }} type="FontAwesome" name="user" />
@@ -95,7 +96,7 @@ function Landing(props) {
             // onChangeText={(searchString) => {this.setState({})}}
           />
         </TypeSection>
-
+        <TextDescription>Start your 3D order experience</TextDescription>
         <Button
           icon={{
             name: "home",
