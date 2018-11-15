@@ -7,14 +7,20 @@ import {
   TouchableHighlight,
   Image,
   ScrollView,
+  TextInput,
   ImageBackground
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import styled from "styled-components/native";
-import { Button, Icon } from "react-native-elements";
+
+import { Button} from "react-native-elements";
 import { AppLoading, Asset, Font } from 'expo';
+import { Icon } from "native-base";
+
+
 
 function Landing() {
+
   const BackgroundView = styled(View)`
     height: 100%;
     margin: 0 5px 5px 5px;
@@ -39,7 +45,15 @@ function Landing() {
     text-align: center;
   `;
 
+  const TypeSection = styled(View)`
+    width: 60%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 4px white solid;
+    border-radius: 25px;
 
+  `;
   return (
     <ImageBackground
       source={require('../../assets/lobster.jpg')}
@@ -48,8 +62,38 @@ function Landing() {
       style={{ width: "100%", height: "100%" }}
     >
       <BackgroundView>
+
         <TextHeader>AR On Your Plate</TextHeader>
         <TextDescription>Start your 3D order experience</TextDescription>
+
+     <TypeSection>
+    <Icon style={{padding: 10}} type='FontAwesome' name='user'/>
+    <TextInput style={{flex: 1,
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingLeft: 0,
+    }}
+        placeholder="Name.."
+        // onChangeText={(searchString) => {this.setState({searchString})}}
+    />
+</TypeSection>
+
+
+   <TypeSection>
+    <Icon style={{padding: 10}} type='FontAwesome' name='phone'/>
+    <TextInput style={{flex: 1,
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingLeft: 0,
+    }}
+        placeholder="Mobile Number.."
+        // onChangeText={(searchString) => {this.setState({})}}
+    />
+</TypeSection>
+
+
 
         <Button
           icon={{
@@ -61,7 +105,8 @@ function Landing() {
           title="Enter"
 
           color="white"
-
+          fontWeight="550"
+          borderRadius = "15"
           onPress={() => {
             Actions.main();
           }}
@@ -70,4 +115,5 @@ function Landing() {
     </ImageBackground>
   );
 }
+
 export default Landing;
