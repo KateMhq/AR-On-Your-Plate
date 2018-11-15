@@ -13,7 +13,7 @@ import {
 import { Actions } from "react-native-router-flux";
 import styled from "styled-components/native";
 
-  import { AppLoading, Asset, Font } from 'expo';
+import { AppLoading, Asset, Font } from "expo";
 import { Icon } from "native-base";
 import { Button } from "react-native-elements";
 
@@ -35,7 +35,6 @@ function Landing(props) {
     text-align: center;
   `;
 
-
   const inputStyle = StyleSheet.create({
     input: {
       flexDirection: "row",
@@ -48,14 +47,10 @@ function Landing(props) {
 
   return (
     <ImageBackground
-      source={{
-        uri:
-          "https://content-eu.drive.amazonaws.com/v2/download/presigned/yxm32nKb4AbO4FJyYXnO2cXGPfYjKYWGulUZMCS3B-oeJxFPc?download=true",
-      }}
+      source={require("../../assets/lobster.jpg")}
       style={{ width: "100%", height: "100%" }}
     >
       <BackgroundView>
-
         <TextHeader>AR On Your Plate</TextHeader>
         <TextDescription>Start your 3D order experience</TextDescription>
 
@@ -81,7 +76,6 @@ function Landing(props) {
           />
         </TypeSection>
 
-
         <TypeSection style={inputStyle.input}>
           <Icon style={{ padding: 10 }} type="FontAwesome" name="phone" />
           <TextInput
@@ -102,7 +96,6 @@ function Landing(props) {
           />
         </TypeSection>
 
-
         <Button
           icon={{
             name: "home",
@@ -111,12 +104,10 @@ function Landing(props) {
           }}
           backgroundColor="#ED6A5A"
           title="Enter"
-
           fontSize={23}
           color="white"
           fontWeight="550"
           borderRadius={15}
-
           onPress={() => {
             props.addUser(props.userName, props.userNumber), Actions.main();
           }}

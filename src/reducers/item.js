@@ -20,7 +20,7 @@ function item(state = initialState, action) {
         {},
         ...dishesArr.map(item => ({ [item.id]: item }))
       );
-    
+
       return Object.assign({}, state, { dishes: dishesObj });
 
     case "UPDATE_DISH":
@@ -56,7 +56,7 @@ function item(state = initialState, action) {
       return decNewState;
 
     case "ADD_TO_BASKET":
-      const updatedBasket = Object.assign({
+      const updatedBasket = Object.assign({}, state, {
         currentOrder: Object.assign({}, state.currentOrder, {
           order: Object.assign({}, state.currentOrder.order, {
             [action.id]: Object.assign({}, state.currentOrder[action.id], {
