@@ -105,10 +105,10 @@ function Landing(props) {
           }}
           backgroundColor="#ED6A5A"
           title="Enter"
-          fontSize={23}
-          color="white"
-          fontWeight="550"
-          borderRadius={15}
+          // fontSize={23}
+          // color="white"
+          // fontWeight="550"
+          // borderRadius={15}
           onPress={() => {
             props.addUser(props.userName, props.userNumber), Actions.main();
           }}
