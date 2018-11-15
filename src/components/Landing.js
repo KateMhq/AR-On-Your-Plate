@@ -12,6 +12,7 @@ import {
 import { Actions } from "react-native-router-flux";
 import styled from "styled-components/native";
 import { Button, Icon } from "react-native-elements";
+import { AppLoading, Asset, Font } from 'expo';
 
 function Landing() {
   const BackgroundView = styled(View)`
@@ -38,12 +39,12 @@ function Landing() {
     text-align: center;
   `;
 
+
   return (
     <ImageBackground
-      source={{
-        uri:
-          "https://content-eu.drive.amazonaws.com/v2/download/presigned/yxm32nKb4AbO4FJyYXnO2cXGPfYjKYWGulUZMCS3B-oeJxFPc?download=true"
-      }}
+      source={require('../../assets/lobster.jpg')}
+          // "https://content-eu.drive.amazonaws.com/v2/download/presigned/yxm32nKb4AbO4FJyYXnO2cXGPfYjKYWGulUZMCS3B-oeJxFPc?download=true"
+
       style={{ width: "100%", height: "100%" }}
     >
       <BackgroundView>
@@ -58,9 +59,9 @@ function Landing() {
           }}
           backgroundColor="#ED6A5A"
           title="Enter"
-          fontSize="23"
+
           color="white"
-          fontWeight="550"
+
           onPress={() => {
             Actions.main();
           }}
