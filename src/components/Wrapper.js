@@ -7,7 +7,7 @@ import {
   Modal,
   TouchableHighlight,
   Image,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import MenuItemContainer from "../containers/MenuItemContainer";
 import { Actions } from "react-native-router-flux";
@@ -24,7 +24,7 @@ import {
   Left,
   Right,
   Icon,
-  Badge
+  Badge,
 } from "native-base";
 import { filterStarter } from "../actions";
 
@@ -37,34 +37,34 @@ class Wrapper extends React.Component {
       checkbox1: true,
       checkbox2: true,
       checkbox3: true,
-      checkbox4: false
+      checkbox4: false,
     };
   }
   toggleTab1() {
     this.setState({
       tab1: true,
-      tab2: false
+      tab2: false,
     });
   }
   toggleTab2() {
     this.setState({
       tab1: false,
-      tab2: true
+      tab2: true,
     });
   }
   toggleSwitch1() {
     this.setState({
-      checkbox1: !this.state.checkbox1
+      checkbox1: !this.state.checkbox1,
     });
   }
   toggleSwitch2() {
     this.setState({
-      checkbox2: !this.state.checkbox2
+      checkbox2: !this.state.checkbox2,
     });
   }
   toggleSwitch3() {
     this.setState({
-      checkbox3: !this.state.checkbox3
+      checkbox3: !this.state.checkbox3,
     });
   }
   render() {
@@ -73,7 +73,7 @@ class Wrapper extends React.Component {
         style={{
           backgroundColor: "#F9FFEB",
           flexDirection: "column",
-          flex: 1
+          flex: 1,
         }}
       >
         {/* <Button
@@ -152,24 +152,22 @@ class Wrapper extends React.Component {
           transparent={false}
           visible={this.props.modalVisible}
         >
-          <TouchableHighlight
-            style={{
-              backgroundColor: "black",
-              height: 50
-            }}
-            onPress={() => {
-              this.props.hideModal();
-            }}
-          >
-            <Text
-              style={{
-                color: "white",
-                fontSize: 50
-              }}
-            >
-              Hide Modal
-            </Text>
-          </TouchableHighlight>
+          <Footer>
+            <FooterTab>
+              <Button
+                vertical
+                active={this.state.tab1}
+                onPress={() => {
+                  this.props.hideModal();
+                }}
+              >
+                <Icon active={this.state.tab1} />
+                <Icon type="FontAwesome" name="home" />
+                <Text>Home</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
+
           <ARContainer />
         </Modal>
       </View>
