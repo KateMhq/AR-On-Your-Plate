@@ -98,33 +98,44 @@ export function addToBasket(id, quantity, name, price) {
   return { type: "ADD_TO_BASKET", name, quantity, id, price };
 }
 
-export function placeOrder(order){
+export function placeOrder(order) {
   return {
-    type:'PLACE_ORDER',
-    order
-  }
+    type: "PLACE_ORDER",
+    order,
+  };
 }
-export function postOrder(currentOrder){
-  return function(dispatch, getState){
-    fetch(`https://project-ar-on-your-plate.herokuapp.com/orders`,{
-      method:"POST",
+export function postOrder(currentOrder) {
+  return function(dispatch, getState) {
+    fetch(`https://project-ar-on-your-plate.herokuapp.com/orders`, {
+      method: "POST",
       headers: {
-            "Content-Type": "application/json; charset=utf-8",
-        },
-      body: JSON.stringify(currentOrder)
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(currentOrder),
     })
-    .then(response => response.json())
-    .then(obj => {
-      dispatch(placeOrder(obj))
-    })
-    .catch(error =>  error.message)
+      .then(response => response.json())
+      .then(obj => {
+        dispatch(placeOrder(obj));
+      })
+      .catch(error => error.message);
+  };
+}
+export function quantityZero(dish) {
+  return { type: "QUANTITY_ZERO", dish };
+}
 
-    }
-  }
-  export function quantityZero(dish) {
-    return { type: "QUANTITY_ZERO", dish };
-  }
+export function emptyBasket() {
+  return { type: "EMPTY_BASKET" };
+}
 
-  export function emptyBasket() {
-    return { type: "EMPTY_BASKET" };
-  }
+export function addUserName(name) {
+  return { type: "ADD_USER_NAME", name };
+}
+
+export function addUserNumber(number) {
+  return { type: "ADD_USER_NUMBER", number };
+}
+
+export function addUser(name, number) {
+  return { type: "ADD_USER", name, number };
+}
