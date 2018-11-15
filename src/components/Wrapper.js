@@ -7,7 +7,7 @@ import {
   Modal,
   TouchableHighlight,
   Image,
-  ScrollView,
+  ScrollView
 } from "react-native";
 import MenuItemContainer from "../containers/MenuItemContainer";
 import { Actions } from "react-native-router-flux";
@@ -73,17 +73,17 @@ class Wrapper extends React.Component {
         style={{
           backgroundColor: "#F9FFEB",
           flexDirection: "column",
-          flex: 1,
+          flex: 1
         }}
       >
-        <Button
+        {/* <Button
           raised
           icon={{ name: "shopping-cart" }}
           title={this.props.basketQuantity}
           onPress={() => {
             Actions.basket();
           }}
-        />
+        /> */}
 
         <View style={{ flexDirection: "row" }}>
           <CheckBox
@@ -110,30 +110,38 @@ class Wrapper extends React.Component {
             checked={this.props.dessert}
             onPress={() => this.props.filterDessert()}
           />
-      
         </View>
-        <ScrollView style={{ width: "98%", marginLeft: 3.5 }}>
+        <ScrollView>
           <MenuItemContainer />
         </ScrollView>
-        <Content/>
+        {/* <Content /> */}
 
         <Footer>
           <FooterTab>
-            <Button vertical active={this.state.tab1} onPress={() => {
-              this.toggleTab1()
-            }}>
-              <Icon active={this.state.tab1}/>
-              <Icon type='FontAwesome' name='home'/>
+            <Button
+              vertical
+              active={this.state.tab1}
+              onPress={() => {
+                this.toggleTab1();
+              }}
+            >
+              <Icon active={this.state.tab1} />
+              <Icon type="FontAwesome" name="home" />
               <Text>Home</Text>
             </Button>
-            <Button badge vertical  active={this.state.tab2} onPress={() => {this.toggleTab2(), Actions.basket()}}>
-            <Badge>
-              <Text>
-                {this.props.basketQuantity}
-              </Text>
-            </Badge>
+            <Button
+              badge
+              vertical
+              active={this.state.tab2}
+              onPress={() => {
+                this.toggleTab2(), Actions.basket();
+              }}
+            >
+              <Badge>
+                <Text>{this.props.basketQuantity}</Text>
+              </Badge>
               <Icon active={this.state.tab2} />
-              <Icon type='FontAwesome' name='shopping-cart'/>
+              <Icon type="FontAwesome" name="shopping-cart" />
               <Text>Basket</Text>
             </Button>
           </FooterTab>
@@ -147,7 +155,7 @@ class Wrapper extends React.Component {
           <TouchableHighlight
             style={{
               backgroundColor: "black",
-              height: 50,
+              height: 50
             }}
             onPress={() => {
               this.props.hideModal();
@@ -156,7 +164,7 @@ class Wrapper extends React.Component {
             <Text
               style={{
                 color: "white",
-                fontSize: 50,
+                fontSize: 50
               }}
             >
               Hide Modal
