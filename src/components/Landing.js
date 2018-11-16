@@ -8,7 +8,7 @@ import {
   Image,
   ScrollView,
   TextInput,
-  ImageBackground
+  ImageBackground,
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import styled from "styled-components/native";
@@ -41,7 +41,7 @@ function Landing(props) {
       width: "80%",
       alignSelf: "center",
       color: "white",
-      borderColor: "white"
+      borderColor: "white",
     },
     inputText: {
       flex: 1,
@@ -54,8 +54,8 @@ function Landing(props) {
       borderColor: "white",
       borderWidth: 1,
       color: "white",
-      borderRadius: 15
-    }
+      borderRadius: 15,
+    },
   });
   const TypeSection = View;
 
@@ -87,6 +87,9 @@ function Landing(props) {
             value={props.userName}
             blurOnSubmit={false}
             autoCorrect={true}
+            autoCapitalize="words"
+            returnKeyType="done"
+            textContentType="name"
             // onChangeText={(searchString) => {this.setState({searchString})}}
           />
         </View>
@@ -106,6 +109,8 @@ function Landing(props) {
             }}
             keyboardType="phone-pad"
             value={props.userNumber}
+            dataDetectorTypes="phoneNumber"
+            maxLength={13}
           />
         </View>
         <TextDescription>Start your 3D order experience</TextDescription>
@@ -113,7 +118,7 @@ function Landing(props) {
           icon={{
             name: "home",
             size: 25,
-            color: "white"
+            color: "white",
           }}
           backgroundColor="#ED6A5A"
           title="Enter"
