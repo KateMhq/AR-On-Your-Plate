@@ -59,14 +59,19 @@ function item(state = initialState, action) {
       const updatedBasket = Object.assign({}, state, {
         currentOrder: Object.assign({}, state.currentOrder, {
           order: Object.assign({}, state.currentOrder.order, {
-            [action.id]: Object.assign({}, state.currentOrder[action.id], {
-              dish_id: action.id,
-              quantity: state.currentOrder[action.id]
-                ? state.currentOrder[action.id].quantity + action.quantity
-                : action.quantity,
-              name: action.name,
-              price: action.price,
-            }),
+            [action.id]: Object.assign(
+              {},
+              state.currentOrder.order[action.id],
+              {
+                dish_id: action.id,
+                quantity: state.currentOrder.order[action.id]
+                  ? state.currentOrder.order[action.id].quantity +
+                    action.quantity
+                  : action.quantity,
+                name: action.name,
+                price: action.price,
+              }
+            ),
           }),
         }),
         dishes: Object.assign({}, state.dishes, {
