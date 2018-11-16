@@ -29,10 +29,11 @@ function Landing(props) {
   `;
 
   const TextDescription = styled(Text)`
-    font-size: 33px;
+    font-size: 50px;
     color: white;
-    font-weight: 400;
+    font-weight: 500;
     text-align: center;
+    padding: 20px;
   `;
 
   const inputStyle = StyleSheet.create({
@@ -48,7 +49,7 @@ function Landing(props) {
       paddingTop: 5,
       paddingRight: 5,
       paddingBottom: 5,
-      marginBottom: 5,
+      marginBottom: 25,
       fontSize: 25,
       paddingLeft: 10,
       borderColor: "white",
@@ -57,14 +58,13 @@ function Landing(props) {
       borderRadius: 15
     }
   });
-  const TypeSection = View;
 
   return (
     <ImageBackground
       source={require("../../assets/lobster.jpg")}
       style={{ width: "100%", height: "100%" }}
     >
-      <BackgroundView>
+      <BackgroundView style={{ flex: 0.5 }}>
         <TextHeader
           style={{ alignSelf: "center", marginBottom: 30, marginTop: 30 }}
         >
@@ -80,14 +80,13 @@ function Landing(props) {
           <TextInput
             style={inputStyle.inputText}
             placeholderTextColor="white"
-            placeholder="Name.."
+            placeholder="Name"
             onChangeText={text => {
               props.addUserName(text);
             }}
             value={props.userName}
             blurOnSubmit={false}
             autoCorrect={true}
-            // onChangeText={(searchString) => {this.setState({searchString})}}
           />
         </View>
 
@@ -108,7 +107,6 @@ function Landing(props) {
             value={props.userNumber}
           />
         </View>
-        <TextDescription>Start your 3D order experience</TextDescription>
         <Button
           icon={{
             name: "home",
@@ -117,15 +115,19 @@ function Landing(props) {
           }}
           backgroundColor="#ED6A5A"
           title="Enter"
-          // fontSize={23}
-          // color="white"
-          // fontWeight="550"
-          // borderRadius={15}
           onPress={() => {
             props.addUser(props.userName, props.userNumber), Actions.main();
           }}
         />
       </BackgroundView>
+      <View
+        style={{
+          flex: 0.5,
+          justifyContent: "center"
+        }}
+      >
+        <TextDescription>Start your 3D order experience</TextDescription>
+      </View>
     </ImageBackground>
   );
 }
