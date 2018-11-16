@@ -12,10 +12,9 @@ import {
 import MenuItemContainer from "../containers/MenuItemContainer";
 import { Actions } from "react-native-router-flux";
 import styled from "styled-components/native";
-import { CheckBox , ButtonGroup} from "react-native-elements";
+import { CheckBox, ButtonGroup } from "react-native-elements";
 import {
- Segment,
-
+  Segment,
   Button,
   Footer,
   FooterTab,
@@ -64,13 +63,13 @@ class Wrapper extends React.Component {
       checkbox3: !this.state.checkbox3,
     });
   }
-  
+
   render() {
     const Buttontext = styled(Text)`
-    margin-left: 30%;
-  `;
+      margin-left: 30%;
+    `;
 
-    const buttons = ['Starters', 'Mains' , 'Desserts']
+    const buttons = ["Starters", "Mains", "Desserts"];
     return (
       <View
         style={{
@@ -79,8 +78,9 @@ class Wrapper extends React.Component {
           flex: 1,
         }}
       >
-          <View style={{flexDirection: 'row'}}>
-         <CheckBox style={{ width: '100%' , padding: 0 , margin: 0}}
+        <View style={{ flexDirection: "row" }}>
+          <CheckBox
+            style={{ width: "100%", padding: 0, margin: 0 }}
             checkedColor="#00FFF5"
             containerStyle={{ backgroundColor: "#fffffff" }}
             center
@@ -90,7 +90,7 @@ class Wrapper extends React.Component {
           />
           <CheckBox
             checkedColor="#00FFF5"
-            containerStyle={{ backgroundColor: "#fffffff" }}
+            containerStyle={{ backgroundColor: "#fff" }}
             center
             title="Main"
             checked={this.props.main}
@@ -105,7 +105,7 @@ class Wrapper extends React.Component {
             onPress={() => this.props.filterDessert()}
           />
         </View>
-        
+
         <ScrollView>
           <MenuItemContainer />
         </ScrollView>
@@ -117,8 +117,7 @@ class Wrapper extends React.Component {
               vertical
               active={this.state.tab1}
               onPress={() => {
-                this.toggleTab1(),
-                Actions.welcome()
+                this.toggleTab1(), Actions.welcome();
               }}
             >
               <Icon active={this.state.tab1} />
@@ -172,4 +171,3 @@ class Wrapper extends React.Component {
 }
 
 export default Wrapper;
-  
