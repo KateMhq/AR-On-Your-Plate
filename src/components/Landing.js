@@ -24,8 +24,9 @@ function Landing(props) {
     color: white;
     font-weight: 500;
     font-size: 40px;
+    text-align:center;
+    margin-bottom: 30px;
   
-    margin: 0;
   `;
 
   const TextDescription = styled(Text)`
@@ -33,6 +34,8 @@ function Landing(props) {
     color: white;
     font-weight: 400;
     text-align: center;
+    margin-bottom: 30%;
+    
    
   `;
 
@@ -42,6 +45,9 @@ function Landing(props) {
       width: "60%",
       justifyContent: "center",
       alignItems: "center",
+      marginLeft: '25%',
+      marginBottom: '10%'
+    
     },
   });
   const TypeSection = View;
@@ -51,7 +57,7 @@ function Landing(props) {
       source={require("../../assets/lobster.jpg")}
       style={{ width: "100%", height: "100%" }}
     >
-      <BackgroundView>
+      <BackgroundView >
         <TextHeader>AR On Your Plate</TextHeader>
        
 
@@ -64,7 +70,8 @@ function Landing(props) {
               paddingRight: 10,
               paddingBottom: 10,
               paddingLeft: 0,
-              color: "black",
+              color: "white",
+              border: "white"
             }}
             placeholder="Name.."
             onChangeText={text => {
@@ -73,7 +80,6 @@ function Landing(props) {
             value={props.userName}
             blurOnSubmit={false}
             autoCorrect={true}
-            // onChangeText={(searchString) => {this.setState({searchString})}}
           />
         </TypeSection>
 
@@ -96,8 +102,8 @@ function Landing(props) {
             // onChangeText={(searchString) => {this.setState({})}}
           />
         </TypeSection>
-        <TextDescription>Start your 3D order experience</TextDescription>
-        <Button
+
+           <Button 
           icon={{
             name: "home",
             size: 25,
@@ -105,14 +111,18 @@ function Landing(props) {
           }}
           backgroundColor="#ED6A5A"
           title="Enter"
-          // fontSize={23}
-          // color="white"
-          // fontWeight="550"
-          // borderRadius={15}
+          fontSize={23}
+          color="white"
+          fontWeight="550"
+          borderRadius={15}
+          
           onPress={() => {
             props.addUser(props.userName, props.userNumber), Actions.main();
           }}
         />
+
+        <TextDescription>Start your 3D order experience</TextDescription>
+     
       </BackgroundView>
     </ImageBackground>
   );

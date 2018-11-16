@@ -82,7 +82,7 @@ class Wrapper extends React.Component {
           <View style={{flexDirection: 'row'}}>
          <CheckBox style={{ width: '100%' , padding: 0 , margin: 0}}
             checkedColor="#00FFF5"
-            containerStyle={{ backgroundColor: "#fffffff" }}
+            containerStyle={{ backgroundColor: this.props.color}}
             center
             title="Starter"
             checked={this.props.starter}
@@ -90,7 +90,7 @@ class Wrapper extends React.Component {
           />
           <CheckBox
             checkedColor="#00FFF5"
-            containerStyle={{ backgroundColor: "#fffffff" }}
+            containerStyle={{ backgroundColor: this.props.color }}
             center
             title="Main"
             checked={this.props.main}
@@ -98,7 +98,7 @@ class Wrapper extends React.Component {
           />
           <CheckBox
             checkedColor="#00FFF5"
-            containerStyle={{ backgroundColor: "#fffffff" }}
+            containerStyle={{ backgroundColor: this.props.color }}
             center
             title="Dessert"
             checked={this.props.dessert}
