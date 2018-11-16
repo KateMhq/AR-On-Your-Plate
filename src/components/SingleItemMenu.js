@@ -57,7 +57,7 @@ export default class SingleItemMenu extends React.Component {
                 <Thumbnail source={{ uri: this.props.dish.image }} />
                 <Body>
                   <Text>
-                    {Object.values(this.props.currentOrder).map(dish => {
+                    {Object.values(this.props.currentOrder.order).map(dish => {
                       if (this.props.dish.dish_name === dish.name) {
                         return (
                           <Text key={dish.name} style={{ fontSize: 15 }}>
