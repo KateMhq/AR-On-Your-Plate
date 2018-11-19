@@ -9,14 +9,14 @@ export default class Basket extends React.Component {
     const discount = 30;
     let deliveryCharge = 2;
     let totalPrice = deliveryCharge;
-    let discountProcent = 0;
+    let discountPercent = 0;
     const Title = styled(Text)`
       font-size: 30px;
       text-align: center;
       padding: 10px;
       background-color: white;
     `;
-
+    // This component maps through the currentOrder.order object, applies the relevent discount, and displays the total price.
     return (
       <View style={{ backgroundColor: "white", flex: 1 }}>
         <Button
@@ -27,7 +27,7 @@ export default class Basket extends React.Component {
             return this.props.emptyBasket();
           }}
           buttonStyle={{
-            backgroundColor: "#FF8360"
+            backgroundColor: "#FF8360",
           }}
           style={{ paddingTop: "5%", paddingBottom: "5%", width: "100%" }}
         />
@@ -42,20 +42,20 @@ export default class Basket extends React.Component {
               ? (deliveryCharge = 2)
               : (deliveryCharge = 2);
             if (orderTotal <= 40) {
-              discountProcent = 0;
+              discountPercent = 0;
             }
             if (orderTotal > 40 && orderTotal <= 60) {
-              discountProcent = 5;
+              discountPercent = 5;
             }
             if (orderTotal > 60) {
-              discountProcent = 10;
+              discountPercent = 10;
             }
 
-            if (discountProcent === 0) {
+            if (discountPercent === 0) {
               totalPrice = orderTotal + deliveryCharge;
             } else {
               totalPrice =
-                (orderTotal + deliveryCharge) * ((100 - discountProcent) / 100);
+                (orderTotal + deliveryCharge) * ((100 - discountPercent) / 100);
             }
 
             return (
@@ -64,7 +64,7 @@ export default class Basket extends React.Component {
                 style={{
                   flexDirection: "row",
                   justifyContent: "space-between",
-                  backgroundColor: "white"
+                  backgroundColor: "white",
                 }}
               >
                 <Text style={{ flex: 0.8, fontSize: 16 }}>
@@ -80,7 +80,7 @@ export default class Basket extends React.Component {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              paddingTop: 10
+              paddingTop: 10,
             }}
           >
             <Text style={{ flex: 0.8, fontSize: 16 }}>Subtotal:</Text>
@@ -93,7 +93,7 @@ export default class Basket extends React.Component {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              alignItems: "center"
+              alignItems: "center",
             }}
           >
             <View
@@ -102,14 +102,14 @@ export default class Basket extends React.Component {
                 paddingTop: 5,
                 flexDirection: "row",
 
-                alignItems: "center"
+                alignItems: "center",
               }}
             >
               <Text
                 style={{
                   fontSize: 16,
                   justifyContent: "center",
-                  flexDirection: "column"
+                  flexDirection: "column",
                 }}
               >
                 Tip:
@@ -118,7 +118,7 @@ export default class Basket extends React.Component {
             <Text
               style={{
                 flex: 0.2,
-                fontSize: 16
+                fontSize: 16,
               }}
             >
               £{deliveryCharge.toFixed(2)}
@@ -129,7 +129,7 @@ export default class Basket extends React.Component {
               flexDirection: "row",
               justifyContent: "space-between",
               paddingTop: 5,
-              paddingBottom: 5
+              paddingBottom: 5,
             }}
           >
             <View style={{ flex: 0.8, fontSize: 16 }}>
@@ -139,7 +139,7 @@ export default class Basket extends React.Component {
               </Text>
             </View>
             <Text style={{ flex: 0.2, alignSelf: "center", fontSize: 16 }}>
-              {discountProcent}%
+              {discountPercent}%
             </Text>
           </View>
           <Divider style={{ backgroundColor: "grey" }} />
@@ -148,14 +148,14 @@ export default class Basket extends React.Component {
               style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
-                paddingTop: 5
+                paddingTop: 5,
               }}
             >
               <Text style={{ flex: 0.8, fontSize: 16 }}>Order total:</Text>
               <Text
                 style={{
                   flex: 0.2,
-                  fontSize: 16
+                  fontSize: 16,
                 }}
               >
                 £{totalPrice.toFixed(2)}
@@ -167,7 +167,7 @@ export default class Basket extends React.Component {
         <View style={{}}>
           <Button
             buttonStyle={{
-              backgroundColor: "#7DCE82"
+              backgroundColor: "#7DCE82",
             }}
             style={{ width: "100%", paddingBottom: "5%" }}
             raised
@@ -175,7 +175,6 @@ export default class Basket extends React.Component {
             title="Complete Order"
             onPress={() => {
               return (
-                console.log(this.props.currentOrder),
                 this.props.postOrder(this.props.currentOrder),
                 this.props.emptyBasket(),
                 Actions.main()

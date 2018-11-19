@@ -90,7 +90,6 @@ function Landing(props) {
             autoCapitalize="words"
             returnKeyType="done"
             textContentType="name"
-            // onChangeText={(searchString) => {this.setState({searchString})}}
           />
         </View>
 
