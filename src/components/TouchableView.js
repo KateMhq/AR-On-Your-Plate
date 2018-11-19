@@ -1,8 +1,6 @@
-import { PropTypes } from 'prop-types';
-import React from 'react';
-import { PanResponder, View } from 'react-native';
-
-/* global Alert */
+import { PropTypes } from "prop-types";
+import React from "react";
+import { PanResponder, View } from "react-native";
 
 class TouchableView extends React.Component {
   static propTypes = {
@@ -22,30 +20,28 @@ class TouchableView extends React.Component {
 
   buildGestures = () =>
     PanResponder.create({
-      // onResponderTerminate: this.props.onResponderTerminate ,
-      // onStartShouldSetResponder: () => true,
       onResponderTerminationRequest: this.props.onResponderTerminationRequest,
       onStartShouldSetPanResponderCapture: this.props
         .onStartShouldSetPanResponderCapture,
-      // onMoveShouldSetPanResponder: (evt, gestureState) => true,
+
       onPanResponderGrant: ({ nativeEvent }, gestureState) => {
         const event = this._transformEvent({ ...nativeEvent, gestureState });
-        this._emit('touchstart', event);
+        this._emit("touchstart", event);
         this.props.onTouchesBegan(event);
       },
       onPanResponderMove: ({ nativeEvent }, gestureState) => {
         const event = this._transformEvent({ ...nativeEvent, gestureState });
-        this._emit('touchmove', event);
+        this._emit("touchmove", event);
         this.props.onTouchesMoved(event);
       },
       onPanResponderRelease: ({ nativeEvent }, gestureState) => {
         const event = this._transformEvent({ ...nativeEvent, gestureState });
-        this._emit('touchend', event);
+        this._emit("touchend", event);
         this.props.onTouchesEnded(event);
       },
       onPanResponderTerminate: ({ nativeEvent }, gestureState) => {
         const event = this._transformEvent({ ...nativeEvent, gestureState });
-        this._emit('touchcancel', event);
+        this._emit("touchcancel", event);
 
         this.props.onTouchesCancelled
           ? this.props.onTouchesCancelled(event)

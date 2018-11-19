@@ -1,17 +1,14 @@
 import Wrapper from "../components/Wrapper";
 import { connect } from "react-redux";
 import {
-  updateDish,
   hideModal,
   receiveCourse,
   filterStarter,
   filterMain,
   filterDessert,
-  updateInitialDishesState,
 } from "../actions";
 
 function mapStateToProps(state) {
-
   return {
     modalVisible: state.wrapper.modalVisible,
     course: state.wrapper.course,
@@ -25,7 +22,6 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
-
     hideModal: () => dispatch(hideModal()),
     receiveCourse: () => dispatch(receiveCourse(course)),
     filterStarter: () => dispatch(filterStarter()),

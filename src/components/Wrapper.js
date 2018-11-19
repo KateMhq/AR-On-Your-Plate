@@ -1,28 +1,11 @@
 import ARContainer from "../containers/ARContainer";
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Modal,
-  TouchableHighlight,
-  Image,
-  ScrollView,
-} from "react-native";
+import { Text, View, Modal, ScrollView } from "react-native";
 import MenuItemContainer from "../containers/MenuItemContainer";
 import { Actions } from "react-native-router-flux";
 import styled from "styled-components/native";
-import { CheckBox, ButtonGroup } from "react-native-elements";
-import {
-  Segment,
-  Button,
-  Footer,
-  FooterTab,
-  Body,
-  Icon,
-  Badge,
-} from "native-base";
-import { filterStarter } from "../actions";
+import { CheckBox } from "react-native-elements";
+import { Button, Footer, FooterTab, Icon, Badge } from "native-base";
 
 class Wrapper extends React.Component {
   constructor(props) {
@@ -109,7 +92,6 @@ class Wrapper extends React.Component {
         <ScrollView>
           <MenuItemContainer />
         </ScrollView>
-        {/* <Content /> */}
 
         <Footer>
           <FooterTab>

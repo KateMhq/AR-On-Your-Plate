@@ -12,10 +12,7 @@ export default class MenuItem extends React.Component {
       <View
         style={{
           backgroundColor: "white",
-          flexDirection: "column"
-          // justifyContent: "space-around",
-          // height: "100%",
-          // flex: 1,
+          flexDirection: "column",
         }}
       >
         {Object.values(this.props.dishes).map(dish => {

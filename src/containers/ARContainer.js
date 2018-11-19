@@ -4,11 +4,9 @@ import {
   updateCameraPermission,
   updateTurkeyObj,
   updateTurkeyMtl,
-  updateInitialDishesState,
 } from "../actions";
 
 function mapStateToProps(state) {
-
   return {
     searchModalVisible: state.ar.searchModalVisible,
     hasCameraPermission: state.ar.hasCameraPermission,
@@ -21,7 +19,6 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => {
   return {
-  
     updateCameraPermission: () => dispatch(updateCameraPermission()),
     updateTurkeyObj: obj => dispatch(updateTurkeyObj(obj)),
     updateTurkeyMtl: obj => dispatch(updateTurkeyMtl(obj)),
