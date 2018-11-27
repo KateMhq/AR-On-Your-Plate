@@ -24,86 +24,96 @@ function Landing(props) {
     color: white;
     font-weight: 500;
     font-size: 40px;
-    text-align:center;
-    margin-bottom: 30px;
-  
+
+    margin: 0;
   `;
 
   const TextDescription = styled(Text)`
-    font-size: 33px;
+    font-size: 50px;
     color: white;
-    font-weight: 400;
+    font-weight: 500;
     text-align: center;
-    margin-bottom: 30%;
-    
-   
+    padding: 20px;
   `;
 
   const inputStyle = StyleSheet.create({
     input: {
       flexDirection: "row",
-      width: "60%",
-      justifyContent: "center",
-      alignItems: "center",
-      marginLeft: '25%',
-      marginBottom: '10%'
-    
+      width: "80%",
+      alignSelf: "center",
+      color: "white",
+      borderColor: "white",
+    },
+    inputText: {
+      flex: 1,
+      paddingTop: 5,
+      paddingRight: 5,
+      paddingBottom: 5,
+      marginBottom: 25,
+      fontSize: 25,
+      paddingLeft: 10,
+      borderColor: "white",
+      borderWidth: 1,
+      color: "white",
+      borderRadius: 15,
     },
   });
-  const TypeSection = View;
 
   return (
     <ImageBackground
       source={require("../../assets/lobster.jpg")}
       style={{ width: "100%", height: "100%" }}
     >
-      <BackgroundView >
-        <TextHeader>AR On Your Plate</TextHeader>
-       
+      <BackgroundView style={{ flex: 0.5 }}>
+        <TextHeader
+          style={{ alignSelf: "center", marginBottom: 30, marginTop: 30 }}
+        >
+          AR On Your Plate
+        </TextHeader>
 
-        <TypeSection style={inputStyle.input}>
-          <Icon style={{ padding: 10 }} type="FontAwesome" name="user" />
+        <View style={inputStyle.input}>
+          <Icon
+            style={{ padding: 10, color: "white" }}
+            type="FontAwesome"
+            name="user"
+          />
           <TextInput
-            style={{
-              flex: 1,
-              paddingTop: 10,
-              paddingRight: 10,
-              paddingBottom: 10,
-              paddingLeft: 0,
-              color: "white",
-              border: "white"
-            }}
-            placeholder="Name.."
+            style={inputStyle.inputText}
+            placeholderTextColor="white"
+            placeholder="Name"
             onChangeText={text => {
               props.addUserName(text);
             }}
             value={props.userName}
             blurOnSubmit={false}
             autoCorrect={true}
+            autoCapitalize="words"
+            returnKeyType="done"
+            textContentType="name"
+            // onChangeText={(searchString) => {this.setState({searchString})}}
           />
-        </TypeSection>
+        </View>
 
-        <TypeSection style={inputStyle.input}>
-          <Icon style={{ padding: 10 }} type="FontAwesome" name="phone" />
+        <View style={inputStyle.input}>
+          <Icon
+            style={{ padding: 10, color: "white" }}
+            type="FontAwesome"
+            name="phone"
+          />
           <TextInput
-            style={{
-              flex: 1,
-              paddingTop: 10,
-              paddingRight: 10,
-              paddingBottom: 10,
-              paddingLeft: 0,
-            }}
+            style={inputStyle.inputText}
+            placeholderTextColor="white"
             placeholder="Mobile Number.."
             onChangeText={text => {
               props.addUserNumber(text);
             }}
             keyboardType="phone-pad"
             value={props.userNumber}
-            // onChangeText={(searchString) => {this.setState({})}}
+            dataDetectorTypes="phoneNumber"
+            maxLength={13}
           />
-        </TypeSection>
-
-           <Button 
+        </View>
+        <Button
           icon={{
             name: "home",
             size: 25,
@@ -111,19 +121,22 @@ function Landing(props) {
           }}
           backgroundColor="#ED6A5A"
           title="Enter"
-          fontSize={23}
-          color="white"
-          fontWeight="550"
-          borderRadius={15}
-          
           onPress={() => {
             props.addUser(props.userName, props.userNumber), Actions.main();
           }}
         />
 
-        <TextDescription>Start your 3D order experience</TextDescription>
+      
      
       </BackgroundView>
+      <View
+        style={{
+          flex: 0.5,
+          justifyContent: "center",
+        }}
+      >
+        <TextDescription>Start your 3D order experience</TextDescription>
+      </View>
     </ImageBackground>
   );
 }
