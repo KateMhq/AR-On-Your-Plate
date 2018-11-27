@@ -1,6 +1,6 @@
 const initialState = {
   userName: "",
-  userNumber: "",
+  userNumber: "+44"
 };
 function landing(state = initialState, action) {
   switch (action.type) {

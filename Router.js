@@ -13,13 +13,7 @@ const RouterComponent = () => {
 
         <Scene key="main">
           <Scene key="menu" component={WrapperContainer} title="Menu" />
-          <Scene
-            key="basket"
-            component={BasketContainer}
-            title="Your Basket"
-            /* rightTitle="Empty Basket"
-            onRight={() => {}} */
-          />
+          <Scene key="basket" component={BasketContainer} title="Your Basket" />
         </Scene>
       </Scene>
     </Router>
