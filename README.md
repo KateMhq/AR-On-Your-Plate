@@ -8,7 +8,7 @@ Available for both iOS and Android
 
 * Luke Speirs
 
-* Jamal Westfield
+* Jamal Westfield-Kirton
 
 * Mariusz Sygnowski
 
